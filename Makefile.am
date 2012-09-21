@@ -1,0 +1,7 @@
+bin_PROGRAMS = hop
+
+hop_LDADD = $(LIBJSONCPP_LIBS) $(LIBSIGC_LIBS)
+hop_CPPFLAGS = $(LIBJSONCPP_CFLAGS) $(LIBSIGC_CFLAGS)
+
+
+hop_SOURCES = src/main.cpp
