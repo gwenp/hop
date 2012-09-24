@@ -6,6 +6,7 @@
 
 #include "UML/UMLClass.hpp"
 #include "PropertySignatureEditor.hpp"
+#include "MethodSignatureEditor.hpp"
 
 #include <gtkmm.h>
 
@@ -29,6 +30,8 @@ private:
 	Gtk::Entry* _classNameEntry;
 	Gtk::Button* _applyButton;
 	Gtk::Button* _cancelButton;
+	Gtk::Button* _addPropertyButton;
+	Gtk::Button* _addMethodButton;
 	Gtk::VBox* _methods_vbox;
 	Gtk::VBox* _properties_vbox;
 

@@ -1131,6 +1131,8 @@ hop-GtkMain.o: src/GUI/GtkMain.cpp src/GUI/GtkMain.hpp \
  /usr/include/gtkmm-2.4/gtkmm/viewport.h \
  src/GUI/UMLDiagramWidget/PropertySignatureEditor.hpp \
  src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp \
+ src/GUI/UMLDiagramWidget/MethodSignatureEditor.hpp \
+ src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp \
  src/GUI/UMLDiagramWidget/../../Debug/Dbg.hpp
 
 src/GUI/GtkMain.hpp:
@@ -3640,5 +3642,9 @@ src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp:
 src/GUI/UMLDiagramWidget/PropertySignatureEditor.hpp:
 
 src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp:
+
+src/GUI/UMLDiagramWidget/MethodSignatureEditor.hpp:
+
+src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp:
 
 src/GUI/UMLDiagramWidget/../../Debug/Dbg.hpp:

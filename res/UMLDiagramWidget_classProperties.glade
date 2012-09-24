@@ -135,7 +135,7 @@
               <placeholder/>
             </child>
             <child>
-              <object class="GtkButton" id="button1">
+              <object class="GtkButton" id="addPropertyButton">
                 <property name="label" translatable="yes">Add Property</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -149,7 +149,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button6">
+              <object class="GtkButton" id="addMethodButton">
                 <property name="label">Add Method</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>

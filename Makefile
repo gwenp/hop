@@ -53,7 +53,8 @@ PROGRAMS = $(bin_PROGRAMS)
 am_hop_OBJECTS = hop-main.$(OBJEXT) hop-Dbg.$(OBJEXT) \
 	hop-Generator.$(OBJEXT) hop-GtkMain.$(OBJEXT) \
 	hop-UMLDiagramWidget.$(OBJEXT) \
-	hop-PropertySignatureEditor.$(OBJEXT) hop-UMLClass.$(OBJEXT) \
+	hop-PropertySignatureEditor.$(OBJEXT) \
+	hop-MethodSignatureEditor.$(OBJEXT) hop-UMLClass.$(OBJEXT) \
 	hop-UMLMethod.$(OBJEXT) hop-UMLProperty.$(OBJEXT) \
 	hop-UMLMember.$(OBJEXT) hop-UMLClassPropertiesWindow.$(OBJEXT) \
 	hop-CairoDrawer.$(OBJEXT)
@@ -193,6 +194,7 @@ hop_SOURCES = src/main.cpp \
 		src/GUI/GtkMain.cpp \
 		src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp \
 		src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp \
+		src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLClass.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp \
@@ -305,6 +307,7 @@ include ./$(DEPDIR)/hop-CairoDrawer.Po
 include ./$(DEPDIR)/hop-Dbg.Po
 include ./$(DEPDIR)/hop-Generator.Po
 include ./$(DEPDIR)/hop-GtkMain.Po
+include ./$(DEPDIR)/hop-MethodSignatureEditor.Po
 include ./$(DEPDIR)/hop-PropertySignatureEditor.Po
 include ./$(DEPDIR)/hop-UMLClass.Po
 include ./$(DEPDIR)/hop-UMLClassPropertiesWindow.Po
@@ -411,6 +414,20 @@ hop-PropertySignatureEditor.obj: src/GUI/UMLDiagramWidget/PropertySignatureEdito
 #	source='src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp' object='hop-PropertySignatureEditor.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-PropertySignatureEditor.obj `if test -f 'src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp'; fi`
+
+hop-MethodSignatureEditor.o: src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-MethodSignatureEditor.o -MD -MP -MF $(DEPDIR)/hop-MethodSignatureEditor.Tpo -c -o hop-MethodSignatureEditor.o `test -f 'src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp
+	$(am__mv) $(DEPDIR)/hop-MethodSignatureEditor.Tpo $(DEPDIR)/hop-MethodSignatureEditor.Po
+#	source='src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp' object='hop-MethodSignatureEditor.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-MethodSignatureEditor.o `test -f 'src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp
+
+hop-MethodSignatureEditor.obj: src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-MethodSignatureEditor.obj -MD -MP -MF $(DEPDIR)/hop-MethodSignatureEditor.Tpo -c -o hop-MethodSignatureEditor.obj `if test -f 'src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-MethodSignatureEditor.Tpo $(DEPDIR)/hop-MethodSignatureEditor.Po
+#	source='src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp' object='hop-MethodSignatureEditor.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-MethodSignatureEditor.obj `if test -f 'src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp'; fi`
 
 hop-UMLClass.o: src/GUI/UMLDiagramWidget/UML/UMLClass.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLClass.o -MD -MP -MF $(DEPDIR)/hop-UMLClass.Tpo -c -o hop-UMLClass.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLClass.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLClass.cpp

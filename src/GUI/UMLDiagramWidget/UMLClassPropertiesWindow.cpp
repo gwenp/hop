@@ -7,6 +7,8 @@ UMLClassPropertiesWindow::UMLClassPropertiesWindow(BaseObjectType* cobject, cons
 	builder->get_widget("cancelButton",_cancelButton);
 	builder->get_widget("properties_vbox",_properties_vbox);
 	builder->get_widget("methods_vbox",_methods_vbox);
+	builder->get_widget("addPropertyButton",_addPropertyButton);
+	builder->get_widget("addMethodButton",_addMethodButton);
 
 	_applyButton->signal_button_press_event().connect(sigc::mem_fun(*this, &UMLClassPropertiesWindow::on_applyButton_clicked), false);
 	_cancelButton->signal_button_press_event().connect(sigc::mem_fun(*this, &UMLClassPropertiesWindow::on_cancelButton_clicked), false);
@@ -28,17 +30,11 @@ void UMLClassPropertiesWindow::setUMLClass(UMLClass* theClass)
 	_theClass = theClass;
 	_classNameEntry->set_text(_theClass->getName());
 
-	std::cout << "size " << theClass->getMethods()->size() << std::endl;
-	
-	Gtk::Label* testMethodLabel = new Gtk::Label("_size");
-	_methods_vbox->pack_start(*testMethodLabel, false,true);
-	testMethodLabel->show();
-
 	for (std::vector<UMLMethod*>::iterator it = theClass->getMethods()->begin(); it != theClass->getMethods()->end(); ++it)
 	{
-		Gtk::Label* newMethodLabel = new Gtk::Label((*it)->getName());
-		_methods_vbox->pack_start(*newMethodLabel, false,true);
-		newMethodLabel->show();
+		MethodSignatureEditor* newMethodEditor = new MethodSignatureEditor(*it);
+		_methods_vbox->pack_start(*newMethodEditor, false,true);
+		newMethodEditor->show();
 	}
 
 	for (std::vector<UMLProperty*>::iterator it = theClass->getProperties()->begin(); it != theClass->getProperties()->end(); ++it)
