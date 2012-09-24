@@ -893,12 +893,20 @@ m4trace:configure.ac:17: -1- PKG_CHECK_EXISTS([sigc++-2.0], [pkg_cv_[]LIBSIGC_CF
 m4trace:configure.ac:17: -1- PKG_CHECK_EXISTS([sigc++-2.0], [pkg_cv_[]LIBSIGC_LIBS=`$PKG_CONFIG --[]libs "sigc++-2.0" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
 m4trace:configure.ac:17: -1- _PKG_SHORT_ERRORS_SUPPORTED
-m4trace:configure.ac:25: -1- m4_pattern_allow([^LIB@&t@OBJS$])
-m4trace:configure.ac:25: -1- m4_pattern_allow([^LTLIBOBJS$])
-m4trace:configure.ac:25: -1- AM_CONDITIONAL([am__EXEEXT], [test -n "$EXEEXT"])
-m4trace:configure.ac:25: -1- m4_pattern_allow([^am__EXEEXT_TRUE$])
-m4trace:configure.ac:25: -1- m4_pattern_allow([^am__EXEEXT_FALSE$])
-m4trace:configure.ac:25: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_TRUE])
-m4trace:configure.ac:25: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_FALSE])
-m4trace:configure.ac:25: -1- _AC_AM_CONFIG_HEADER_HOOK(["$ac_file"])
-m4trace:configure.ac:25: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS
+m4trace:configure.ac:18: -1- PKG_CHECK_MODULES([GTKMM], [gtkmm-2.4])
+m4trace:configure.ac:18: -1- m4_pattern_allow([^GTKMM_CFLAGS$])
+m4trace:configure.ac:18: -1- m4_pattern_allow([^GTKMM_LIBS$])
+m4trace:configure.ac:18: -1- PKG_CHECK_EXISTS([gtkmm-2.4], [pkg_cv_[]GTKMM_CFLAGS=`$PKG_CONFIG --[]cflags "gtkmm-2.4" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
+m4trace:configure.ac:18: -1- PKG_CHECK_EXISTS([gtkmm-2.4], [pkg_cv_[]GTKMM_LIBS=`$PKG_CONFIG --[]libs "gtkmm-2.4" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
+m4trace:configure.ac:18: -1- _PKG_SHORT_ERRORS_SUPPORTED
+m4trace:configure.ac:27: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:configure.ac:27: -1- m4_pattern_allow([^LTLIBOBJS$])
+m4trace:configure.ac:27: -1- AM_CONDITIONAL([am__EXEEXT], [test -n "$EXEEXT"])
+m4trace:configure.ac:27: -1- m4_pattern_allow([^am__EXEEXT_TRUE$])
+m4trace:configure.ac:27: -1- m4_pattern_allow([^am__EXEEXT_FALSE$])
+m4trace:configure.ac:27: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_TRUE])
+m4trace:configure.ac:27: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_FALSE])
+m4trace:configure.ac:27: -1- _AC_AM_CONFIG_HEADER_HOOK(["$ac_file"])
+m4trace:configure.ac:27: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS

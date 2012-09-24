@@ -15,6 +15,8 @@ AC_PROG_CC
 # Checks for libraries.
 PKG_CHECK_MODULES([LIBJSONCPP], [jsoncpp])
 PKG_CHECK_MODULES([LIBSIGC], [sigc++-2.0])
+PKG_CHECK_MODULES([GTKMM], [gtkmm-2.4])
+
 # Checks for header files.
 
 # Checks for typedefs, structures, and compiler characteristics.

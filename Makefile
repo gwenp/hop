@@ -50,10 +50,17 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_hop_OBJECTS = hop-main.$(OBJEXT)
+am_hop_OBJECTS = hop-main.$(OBJEXT) hop-Dbg.$(OBJEXT) \
+	hop-Generator.$(OBJEXT) hop-GtkMain.$(OBJEXT) \
+	hop-UMLDiagramWidget.$(OBJEXT) \
+	hop-PropertySignatureEditor.$(OBJEXT) hop-UMLClass.$(OBJEXT) \
+	hop-UMLMethod.$(OBJEXT) hop-UMLProperty.$(OBJEXT) \
+	hop-UMLMember.$(OBJEXT) hop-UMLClassPropertiesWindow.$(OBJEXT) \
+	hop-CairoDrawer.$(OBJEXT)
 hop_OBJECTS = $(am_hop_OBJECTS)
 am__DEPENDENCIES_1 =
-hop_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+hop_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I.
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -102,6 +109,8 @@ ECHO_C =
 ECHO_N = -n
 ECHO_T = 
 EXEEXT = 
+GTKMM_CFLAGS = -pthread -I/usr/include/gtkmm-2.4 -I/usr/lib/x86_64-linux-gnu/gtkmm-2.4/include -I/usr/include/atkmm-1.6 -I/usr/include/giomm-2.4 -I/usr/lib/x86_64-linux-gnu/giomm-2.4/include -I/usr/include/pangomm-1.4 -I/usr/lib/x86_64-linux-gnu/pangomm-1.4/include -I/usr/include/gtk-2.0 -I/usr/include/gtk-unix-print-2.0 -I/usr/include/gdkmm-2.4 -I/usr/lib/x86_64-linux-gnu/gdkmm-2.4/include -I/usr/include/atk-1.0 -I/usr/include/glibmm-2.4 -I/usr/lib/x86_64-linux-gnu/glibmm-2.4/include -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sigc++-2.0 -I/usr/lib/x86_64-linux-gnu/sigc++-2.0/include -I/usr/include/cairomm-1.0 -I/usr/lib/x86_64-linux-gnu/cairomm-1.0/include -I/usr/include/pango-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gio-unix-2.0/  
+GTKMM_LIBS = -lgtkmm-2.4 -latkmm-1.6 -lgdkmm-2.4 -lgiomm-2.4 -lpangomm-1.4 -lgtk-x11-2.0 -lglibmm-2.4 -lcairomm-1.0 -lsigc-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lglib-2.0  
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
@@ -176,9 +185,21 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-hop_LDADD = $(LIBJSONCPP_LIBS) $(LIBSIGC_LIBS)
-hop_CPPFLAGS = $(LIBJSONCPP_CFLAGS) $(LIBSIGC_CFLAGS)
-hop_SOURCES = src/main.cpp
+hop_LDADD = $(LIBJSONCPP_LIBS) $(LIBSIGC_LIBS) $(GTKMM_LIBS)
+hop_CPPFLAGS = $(LIBJSONCPP_CFLAGS) $(LIBSIGC_CFLAGS) $(GTKMM_CFLAGS) -std=c++0x
+hop_SOURCES = src/main.cpp \
+		src/Debug/Dbg.cpp \
+		src/Generator/Generator.cpp \
+		src/GUI/GtkMain.cpp \
+		src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp \
+		src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp \
+		src/GUI/UMLDiagramWidget/UML/UMLClass.cpp \
+		src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp \
+		src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp \
+		src/GUI/UMLDiagramWidget/UML/UMLMember.cpp \
+		src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp \
+		src/utils/CairoDrawer.cpp
+
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -280,6 +301,17 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/hop-CairoDrawer.Po
+include ./$(DEPDIR)/hop-Dbg.Po
+include ./$(DEPDIR)/hop-Generator.Po
+include ./$(DEPDIR)/hop-GtkMain.Po
+include ./$(DEPDIR)/hop-PropertySignatureEditor.Po
+include ./$(DEPDIR)/hop-UMLClass.Po
+include ./$(DEPDIR)/hop-UMLClassPropertiesWindow.Po
+include ./$(DEPDIR)/hop-UMLDiagramWidget.Po
+include ./$(DEPDIR)/hop-UMLMember.Po
+include ./$(DEPDIR)/hop-UMLMethod.Po
+include ./$(DEPDIR)/hop-UMLProperty.Po
 include ./$(DEPDIR)/hop-main.Po
 
 .cpp.o:
@@ -309,6 +341,160 @@ hop-main.obj: src/main.cpp
 #	source='src/main.cpp' object='hop-main.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-main.obj `if test -f 'src/main.cpp'; then $(CYGPATH_W) 'src/main.cpp'; else $(CYGPATH_W) '$(srcdir)/src/main.cpp'; fi`
+
+hop-Dbg.o: src/Debug/Dbg.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-Dbg.o -MD -MP -MF $(DEPDIR)/hop-Dbg.Tpo -c -o hop-Dbg.o `test -f 'src/Debug/Dbg.cpp' || echo '$(srcdir)/'`src/Debug/Dbg.cpp
+	$(am__mv) $(DEPDIR)/hop-Dbg.Tpo $(DEPDIR)/hop-Dbg.Po
+#	source='src/Debug/Dbg.cpp' object='hop-Dbg.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-Dbg.o `test -f 'src/Debug/Dbg.cpp' || echo '$(srcdir)/'`src/Debug/Dbg.cpp
+
+hop-Dbg.obj: src/Debug/Dbg.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-Dbg.obj -MD -MP -MF $(DEPDIR)/hop-Dbg.Tpo -c -o hop-Dbg.obj `if test -f 'src/Debug/Dbg.cpp'; then $(CYGPATH_W) 'src/Debug/Dbg.cpp'; else $(CYGPATH_W) '$(srcdir)/src/Debug/Dbg.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-Dbg.Tpo $(DEPDIR)/hop-Dbg.Po
+#	source='src/Debug/Dbg.cpp' object='hop-Dbg.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-Dbg.obj `if test -f 'src/Debug/Dbg.cpp'; then $(CYGPATH_W) 'src/Debug/Dbg.cpp'; else $(CYGPATH_W) '$(srcdir)/src/Debug/Dbg.cpp'; fi`
+
+hop-Generator.o: src/Generator/Generator.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-Generator.o -MD -MP -MF $(DEPDIR)/hop-Generator.Tpo -c -o hop-Generator.o `test -f 'src/Generator/Generator.cpp' || echo '$(srcdir)/'`src/Generator/Generator.cpp
+	$(am__mv) $(DEPDIR)/hop-Generator.Tpo $(DEPDIR)/hop-Generator.Po
+#	source='src/Generator/Generator.cpp' object='hop-Generator.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-Generator.o `test -f 'src/Generator/Generator.cpp' || echo '$(srcdir)/'`src/Generator/Generator.cpp
+
+hop-Generator.obj: src/Generator/Generator.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-Generator.obj -MD -MP -MF $(DEPDIR)/hop-Generator.Tpo -c -o hop-Generator.obj `if test -f 'src/Generator/Generator.cpp'; then $(CYGPATH_W) 'src/Generator/Generator.cpp'; else $(CYGPATH_W) '$(srcdir)/src/Generator/Generator.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-Generator.Tpo $(DEPDIR)/hop-Generator.Po
+#	source='src/Generator/Generator.cpp' object='hop-Generator.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-Generator.obj `if test -f 'src/Generator/Generator.cpp'; then $(CYGPATH_W) 'src/Generator/Generator.cpp'; else $(CYGPATH_W) '$(srcdir)/src/Generator/Generator.cpp'; fi`
+
+hop-GtkMain.o: src/GUI/GtkMain.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-GtkMain.o -MD -MP -MF $(DEPDIR)/hop-GtkMain.Tpo -c -o hop-GtkMain.o `test -f 'src/GUI/GtkMain.cpp' || echo '$(srcdir)/'`src/GUI/GtkMain.cpp
+	$(am__mv) $(DEPDIR)/hop-GtkMain.Tpo $(DEPDIR)/hop-GtkMain.Po
+#	source='src/GUI/GtkMain.cpp' object='hop-GtkMain.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-GtkMain.o `test -f 'src/GUI/GtkMain.cpp' || echo '$(srcdir)/'`src/GUI/GtkMain.cpp
+
+hop-GtkMain.obj: src/GUI/GtkMain.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-GtkMain.obj -MD -MP -MF $(DEPDIR)/hop-GtkMain.Tpo -c -o hop-GtkMain.obj `if test -f 'src/GUI/GtkMain.cpp'; then $(CYGPATH_W) 'src/GUI/GtkMain.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/GtkMain.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-GtkMain.Tpo $(DEPDIR)/hop-GtkMain.Po
+#	source='src/GUI/GtkMain.cpp' object='hop-GtkMain.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-GtkMain.obj `if test -f 'src/GUI/GtkMain.cpp'; then $(CYGPATH_W) 'src/GUI/GtkMain.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/GtkMain.cpp'; fi`
+
+hop-UMLDiagramWidget.o: src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLDiagramWidget.o -MD -MP -MF $(DEPDIR)/hop-UMLDiagramWidget.Tpo -c -o hop-UMLDiagramWidget.o `test -f 'src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp
+	$(am__mv) $(DEPDIR)/hop-UMLDiagramWidget.Tpo $(DEPDIR)/hop-UMLDiagramWidget.Po
+#	source='src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp' object='hop-UMLDiagramWidget.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLDiagramWidget.o `test -f 'src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp
+
+hop-UMLDiagramWidget.obj: src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLDiagramWidget.obj -MD -MP -MF $(DEPDIR)/hop-UMLDiagramWidget.Tpo -c -o hop-UMLDiagramWidget.obj `if test -f 'src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-UMLDiagramWidget.Tpo $(DEPDIR)/hop-UMLDiagramWidget.Po
+#	source='src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp' object='hop-UMLDiagramWidget.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLDiagramWidget.obj `if test -f 'src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp'; fi`
+
+hop-PropertySignatureEditor.o: src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-PropertySignatureEditor.o -MD -MP -MF $(DEPDIR)/hop-PropertySignatureEditor.Tpo -c -o hop-PropertySignatureEditor.o `test -f 'src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp
+	$(am__mv) $(DEPDIR)/hop-PropertySignatureEditor.Tpo $(DEPDIR)/hop-PropertySignatureEditor.Po
+#	source='src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp' object='hop-PropertySignatureEditor.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-PropertySignatureEditor.o `test -f 'src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp
+
+hop-PropertySignatureEditor.obj: src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-PropertySignatureEditor.obj -MD -MP -MF $(DEPDIR)/hop-PropertySignatureEditor.Tpo -c -o hop-PropertySignatureEditor.obj `if test -f 'src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-PropertySignatureEditor.Tpo $(DEPDIR)/hop-PropertySignatureEditor.Po
+#	source='src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp' object='hop-PropertySignatureEditor.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-PropertySignatureEditor.obj `if test -f 'src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp'; fi`
+
+hop-UMLClass.o: src/GUI/UMLDiagramWidget/UML/UMLClass.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLClass.o -MD -MP -MF $(DEPDIR)/hop-UMLClass.Tpo -c -o hop-UMLClass.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLClass.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLClass.cpp
+	$(am__mv) $(DEPDIR)/hop-UMLClass.Tpo $(DEPDIR)/hop-UMLClass.Po
+#	source='src/GUI/UMLDiagramWidget/UML/UMLClass.cpp' object='hop-UMLClass.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLClass.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLClass.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLClass.cpp
+
+hop-UMLClass.obj: src/GUI/UMLDiagramWidget/UML/UMLClass.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLClass.obj -MD -MP -MF $(DEPDIR)/hop-UMLClass.Tpo -c -o hop-UMLClass.obj `if test -f 'src/GUI/UMLDiagramWidget/UML/UMLClass.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UML/UMLClass.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UML/UMLClass.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-UMLClass.Tpo $(DEPDIR)/hop-UMLClass.Po
+#	source='src/GUI/UMLDiagramWidget/UML/UMLClass.cpp' object='hop-UMLClass.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLClass.obj `if test -f 'src/GUI/UMLDiagramWidget/UML/UMLClass.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UML/UMLClass.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UML/UMLClass.cpp'; fi`
+
+hop-UMLMethod.o: src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLMethod.o -MD -MP -MF $(DEPDIR)/hop-UMLMethod.Tpo -c -o hop-UMLMethod.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp
+	$(am__mv) $(DEPDIR)/hop-UMLMethod.Tpo $(DEPDIR)/hop-UMLMethod.Po
+#	source='src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp' object='hop-UMLMethod.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLMethod.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp
+
+hop-UMLMethod.obj: src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLMethod.obj -MD -MP -MF $(DEPDIR)/hop-UMLMethod.Tpo -c -o hop-UMLMethod.obj `if test -f 'src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-UMLMethod.Tpo $(DEPDIR)/hop-UMLMethod.Po
+#	source='src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp' object='hop-UMLMethod.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLMethod.obj `if test -f 'src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp'; fi`
+
+hop-UMLProperty.o: src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLProperty.o -MD -MP -MF $(DEPDIR)/hop-UMLProperty.Tpo -c -o hop-UMLProperty.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp
+	$(am__mv) $(DEPDIR)/hop-UMLProperty.Tpo $(DEPDIR)/hop-UMLProperty.Po
+#	source='src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp' object='hop-UMLProperty.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLProperty.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp
+
+hop-UMLProperty.obj: src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLProperty.obj -MD -MP -MF $(DEPDIR)/hop-UMLProperty.Tpo -c -o hop-UMLProperty.obj `if test -f 'src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-UMLProperty.Tpo $(DEPDIR)/hop-UMLProperty.Po
+#	source='src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp' object='hop-UMLProperty.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLProperty.obj `if test -f 'src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp'; fi`
+
+hop-UMLMember.o: src/GUI/UMLDiagramWidget/UML/UMLMember.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLMember.o -MD -MP -MF $(DEPDIR)/hop-UMLMember.Tpo -c -o hop-UMLMember.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLMember.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLMember.cpp
+	$(am__mv) $(DEPDIR)/hop-UMLMember.Tpo $(DEPDIR)/hop-UMLMember.Po
+#	source='src/GUI/UMLDiagramWidget/UML/UMLMember.cpp' object='hop-UMLMember.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLMember.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLMember.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLMember.cpp
+
+hop-UMLMember.obj: src/GUI/UMLDiagramWidget/UML/UMLMember.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLMember.obj -MD -MP -MF $(DEPDIR)/hop-UMLMember.Tpo -c -o hop-UMLMember.obj `if test -f 'src/GUI/UMLDiagramWidget/UML/UMLMember.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UML/UMLMember.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UML/UMLMember.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-UMLMember.Tpo $(DEPDIR)/hop-UMLMember.Po
+#	source='src/GUI/UMLDiagramWidget/UML/UMLMember.cpp' object='hop-UMLMember.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLMember.obj `if test -f 'src/GUI/UMLDiagramWidget/UML/UMLMember.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UML/UMLMember.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UML/UMLMember.cpp'; fi`
+
+hop-UMLClassPropertiesWindow.o: src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLClassPropertiesWindow.o -MD -MP -MF $(DEPDIR)/hop-UMLClassPropertiesWindow.Tpo -c -o hop-UMLClassPropertiesWindow.o `test -f 'src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp
+	$(am__mv) $(DEPDIR)/hop-UMLClassPropertiesWindow.Tpo $(DEPDIR)/hop-UMLClassPropertiesWindow.Po
+#	source='src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp' object='hop-UMLClassPropertiesWindow.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLClassPropertiesWindow.o `test -f 'src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp
+
+hop-UMLClassPropertiesWindow.obj: src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLClassPropertiesWindow.obj -MD -MP -MF $(DEPDIR)/hop-UMLClassPropertiesWindow.Tpo -c -o hop-UMLClassPropertiesWindow.obj `if test -f 'src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-UMLClassPropertiesWindow.Tpo $(DEPDIR)/hop-UMLClassPropertiesWindow.Po
+#	source='src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp' object='hop-UMLClassPropertiesWindow.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLClassPropertiesWindow.obj `if test -f 'src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp'; fi`
+
+hop-CairoDrawer.o: src/utils/CairoDrawer.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-CairoDrawer.o -MD -MP -MF $(DEPDIR)/hop-CairoDrawer.Tpo -c -o hop-CairoDrawer.o `test -f 'src/utils/CairoDrawer.cpp' || echo '$(srcdir)/'`src/utils/CairoDrawer.cpp
+	$(am__mv) $(DEPDIR)/hop-CairoDrawer.Tpo $(DEPDIR)/hop-CairoDrawer.Po
+#	source='src/utils/CairoDrawer.cpp' object='hop-CairoDrawer.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-CairoDrawer.o `test -f 'src/utils/CairoDrawer.cpp' || echo '$(srcdir)/'`src/utils/CairoDrawer.cpp
+
+hop-CairoDrawer.obj: src/utils/CairoDrawer.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-CairoDrawer.obj -MD -MP -MF $(DEPDIR)/hop-CairoDrawer.Tpo -c -o hop-CairoDrawer.obj `if test -f 'src/utils/CairoDrawer.cpp'; then $(CYGPATH_W) 'src/utils/CairoDrawer.cpp'; else $(CYGPATH_W) '$(srcdir)/src/utils/CairoDrawer.cpp'; fi`
+	$(am__mv) $(DEPDIR)/hop-CairoDrawer.Tpo $(DEPDIR)/hop-CairoDrawer.Po
+#	source='src/utils/CairoDrawer.cpp' object='hop-CairoDrawer.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-CairoDrawer.obj `if test -f 'src/utils/CairoDrawer.cpp'; then $(CYGPATH_W) 'src/utils/CairoDrawer.cpp'; else $(CYGPATH_W) '$(srcdir)/src/utils/CairoDrawer.cpp'; fi`
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \

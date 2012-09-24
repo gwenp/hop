@@ -40,29 +40,29 @@ PATH: /usr/games
 ## Core tests. ##
 ## ----------- ##
 
-configure:1882: checking for a BSD-compatible install
-configure:1950: result: /usr/bin/install -c
-configure:1961: checking whether build environment is sane
-configure:2011: result: yes
-configure:2152: checking for a thread-safe mkdir -p
-configure:2191: result: /bin/mkdir -p
-configure:2204: checking for gawk
-configure:2220: found /usr/bin/gawk
-configure:2231: result: gawk
-configure:2242: checking whether make sets $(MAKE)
-configure:2264: result: yes
-configure:2399: checking for g++
-configure:2415: found /usr/bin/g++
-configure:2426: result: g++
-configure:2453: checking for C++ compiler version
-configure:2462: g++ --version >&5
+configure:1889: checking for a BSD-compatible install
+configure:1957: result: /usr/bin/install -c
+configure:1968: checking whether build environment is sane
+configure:2018: result: yes
+configure:2159: checking for a thread-safe mkdir -p
+configure:2198: result: /bin/mkdir -p
+configure:2211: checking for gawk
+configure:2227: found /usr/bin/gawk
+configure:2238: result: gawk
+configure:2249: checking whether make sets $(MAKE)
+configure:2271: result: yes
+configure:2406: checking for g++
+configure:2422: found /usr/bin/g++
+configure:2433: result: g++
+configure:2460: checking for C++ compiler version
+configure:2469: g++ --version >&5
 g++ (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
 Copyright (C) 2011 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-configure:2473: $? = 0
-configure:2462: g++ -v >&5
+configure:2480: $? = 0
+configure:2469: g++ -v >&5
 Using built-in specs.
 COLLECT_GCC=g++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.6/lto-wrapper
@@ -70,61 +70,61 @@ Target: x86_64-linux-gnu
 Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 4.6.3-1ubuntu5' --with-bugurl=file:///usr/share/doc/gcc-4.6/README.Bugs --enable-languages=c,c++,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.6 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.6 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --enable-plugin --enable-objc-gc --disable-werror --with-arch-32=i686 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
 Thread model: posix
 gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) 
-configure:2473: $? = 0
-configure:2462: g++ -V >&5
+configure:2480: $? = 0
+configure:2469: g++ -V >&5
 g++: error: unrecognized option '-V'
 g++: fatal error: no input files
 compilation terminated.
-configure:2473: $? = 4
-configure:2462: g++ -qversion >&5
+configure:2480: $? = 4
+configure:2469: g++ -qversion >&5
 g++: error: unrecognized option '-qversion'
 g++: fatal error: no input files
 compilation terminated.
-configure:2473: $? = 4
-configure:2493: checking whether the C++ compiler works
-configure:2515: g++    conftest.cpp  >&5
-configure:2519: $? = 0
-configure:2567: result: yes
-configure:2570: checking for C++ compiler default output file name
-configure:2572: result: a.out
-configure:2578: checking for suffix of executables
-configure:2585: g++ -o conftest    conftest.cpp  >&5
-configure:2589: $? = 0
-configure:2611: result: 
-configure:2633: checking whether we are cross compiling
-configure:2641: g++ -o conftest    conftest.cpp  >&5
-configure:2645: $? = 0
-configure:2652: ./conftest
-configure:2656: $? = 0
-configure:2671: result: no
-configure:2676: checking for suffix of object files
-configure:2698: g++ -c   conftest.cpp >&5
-configure:2702: $? = 0
-configure:2723: result: o
-configure:2727: checking whether we are using the GNU C++ compiler
-configure:2746: g++ -c   conftest.cpp >&5
-configure:2746: $? = 0
-configure:2755: result: yes
-configure:2764: checking whether g++ accepts -g
-configure:2784: g++ -c -g  conftest.cpp >&5
-configure:2784: $? = 0
-configure:2825: result: yes
-configure:2859: checking for style of include used by make
-configure:2887: result: GNU
-configure:2913: checking dependency style of g++
-configure:3024: result: gcc3
-configure:3087: checking for gcc
-configure:3103: found /usr/bin/gcc
-configure:3114: result: gcc
-configure:3343: checking for C compiler version
-configure:3352: gcc --version >&5
+configure:2480: $? = 4
+configure:2500: checking whether the C++ compiler works
+configure:2522: g++    conftest.cpp  >&5
+configure:2526: $? = 0
+configure:2574: result: yes
+configure:2577: checking for C++ compiler default output file name
+configure:2579: result: a.out
+configure:2585: checking for suffix of executables
+configure:2592: g++ -o conftest    conftest.cpp  >&5
+configure:2596: $? = 0
+configure:2618: result: 
+configure:2640: checking whether we are cross compiling
+configure:2648: g++ -o conftest    conftest.cpp  >&5
+configure:2652: $? = 0
+configure:2659: ./conftest
+configure:2663: $? = 0
+configure:2678: result: no
+configure:2683: checking for suffix of object files
+configure:2705: g++ -c   conftest.cpp >&5
+configure:2709: $? = 0
+configure:2730: result: o
+configure:2734: checking whether we are using the GNU C++ compiler
+configure:2753: g++ -c   conftest.cpp >&5
+configure:2753: $? = 0
+configure:2762: result: yes
+configure:2771: checking whether g++ accepts -g
+configure:2791: g++ -c -g  conftest.cpp >&5
+configure:2791: $? = 0
+configure:2832: result: yes
+configure:2866: checking for style of include used by make
+configure:2894: result: GNU
+configure:2920: checking dependency style of g++
+configure:3031: result: gcc3
+configure:3094: checking for gcc
+configure:3110: found /usr/bin/gcc
+configure:3121: result: gcc
+configure:3350: checking for C compiler version
+configure:3359: gcc --version >&5
 gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
 Copyright (C) 2011 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-configure:3363: $? = 0
-configure:3352: gcc -v >&5
+configure:3370: $? = 0
+configure:3359: gcc -v >&5
 Using built-in specs.
 COLLECT_GCC=gcc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.6/lto-wrapper
@@ -132,49 +132,55 @@ Target: x86_64-linux-gnu
 Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 4.6.3-1ubuntu5' --with-bugurl=file:///usr/share/doc/gcc-4.6/README.Bugs --enable-languages=c,c++,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.6 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.6 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --enable-plugin --enable-objc-gc --disable-werror --with-arch-32=i686 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
 Thread model: posix
 gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) 
-configure:3363: $? = 0
-configure:3352: gcc -V >&5
+configure:3370: $? = 0
+configure:3359: gcc -V >&5
 gcc: error: unrecognized option '-V'
 gcc: fatal error: no input files
 compilation terminated.
-configure:3363: $? = 4
-configure:3352: gcc -qversion >&5
+configure:3370: $? = 4
+configure:3359: gcc -qversion >&5
 gcc: error: unrecognized option '-qversion'
 gcc: fatal error: no input files
 compilation terminated.
-configure:3363: $? = 4
-configure:3367: checking whether we are using the GNU C compiler
-configure:3386: gcc -c   conftest.c >&5
-configure:3386: $? = 0
-configure:3395: result: yes
-configure:3404: checking whether gcc accepts -g
-configure:3424: gcc -c -g  conftest.c >&5
-configure:3424: $? = 0
-configure:3465: result: yes
-configure:3482: checking for gcc option to accept ISO C89
-configure:3546: gcc  -c -g -O2  conftest.c >&5
-configure:3546: $? = 0
-configure:3559: result: none needed
-configure:3581: checking dependency style of gcc
-configure:3692: result: gcc3
-configure:3763: checking for pkg-config
-configure:3781: found /usr/bin/pkg-config
-configure:3793: result: /usr/bin/pkg-config
-configure:3818: checking pkg-config is at least version 0.9.0
-configure:3821: result: yes
-configure:3831: checking for LIBJSONCPP
-configure:3838: $PKG_CONFIG --exists --print-errors "jsoncpp"
-configure:3841: $? = 0
-configure:3855: $PKG_CONFIG --exists --print-errors "jsoncpp"
-configure:3858: $? = 0
-configure:3916: result: yes
-configure:3922: checking for LIBSIGC
-configure:3929: $PKG_CONFIG --exists --print-errors "sigc++-2.0"
-configure:3932: $? = 0
-configure:3946: $PKG_CONFIG --exists --print-errors "sigc++-2.0"
-configure:3949: $? = 0
-configure:4007: result: yes
-configure:4153: creating ./config.status
+configure:3370: $? = 4
+configure:3374: checking whether we are using the GNU C compiler
+configure:3393: gcc -c   conftest.c >&5
+configure:3393: $? = 0
+configure:3402: result: yes
+configure:3411: checking whether gcc accepts -g
+configure:3431: gcc -c -g  conftest.c >&5
+configure:3431: $? = 0
+configure:3472: result: yes
+configure:3489: checking for gcc option to accept ISO C89
+configure:3553: gcc  -c -g -O2  conftest.c >&5
+configure:3553: $? = 0
+configure:3566: result: none needed
+configure:3588: checking dependency style of gcc
+configure:3699: result: gcc3
+configure:3770: checking for pkg-config
+configure:3788: found /usr/bin/pkg-config
+configure:3800: result: /usr/bin/pkg-config
+configure:3825: checking pkg-config is at least version 0.9.0
+configure:3828: result: yes
+configure:3838: checking for LIBJSONCPP
+configure:3845: $PKG_CONFIG --exists --print-errors "jsoncpp"
+configure:3848: $? = 0
+configure:3862: $PKG_CONFIG --exists --print-errors "jsoncpp"
+configure:3865: $? = 0
+configure:3923: result: yes
+configure:3929: checking for LIBSIGC
+configure:3936: $PKG_CONFIG --exists --print-errors "sigc++-2.0"
+configure:3939: $? = 0
+configure:3953: $PKG_CONFIG --exists --print-errors "sigc++-2.0"
+configure:3956: $? = 0
+configure:4014: result: yes
+configure:4020: checking for GTKMM
+configure:4027: $PKG_CONFIG --exists --print-errors "gtkmm-2.4"
+configure:4030: $? = 0
+configure:4044: $PKG_CONFIG --exists --print-errors "gtkmm-2.4"
+configure:4047: $? = 0
+configure:4105: result: yes
+configure:4252: creating ./config.status
 
 ## ---------------- ##
 ## Cache variables. ##
@@ -194,6 +200,10 @@ ac_cv_env_CXXFLAGS_set=
 ac_cv_env_CXXFLAGS_value=
 ac_cv_env_CXX_set=
 ac_cv_env_CXX_value=
+ac_cv_env_GTKMM_CFLAGS_set=
+ac_cv_env_GTKMM_CFLAGS_value=
+ac_cv_env_GTKMM_LIBS_set=
+ac_cv_env_GTKMM_LIBS_value=
 ac_cv_env_LDFLAGS_set=
 ac_cv_env_LDFLAGS_value=
 ac_cv_env_LIBJSONCPP_CFLAGS_set=
@@ -231,6 +241,8 @@ ac_cv_prog_cxx_g=yes
 ac_cv_prog_make_make_set=yes
 am_cv_CC_dependencies_compiler_type=gcc3
 am_cv_CXX_dependencies_compiler_type=gcc3
+pkg_cv_GTKMM_CFLAGS='-pthread -I/usr/include/gtkmm-2.4 -I/usr/lib/x86_64-linux-gnu/gtkmm-2.4/include -I/usr/include/atkmm-1.6 -I/usr/include/giomm-2.4 -I/usr/lib/x86_64-linux-gnu/giomm-2.4/include -I/usr/include/pangomm-1.4 -I/usr/lib/x86_64-linux-gnu/pangomm-1.4/include -I/usr/include/gtk-2.0 -I/usr/include/gtk-unix-print-2.0 -I/usr/include/gdkmm-2.4 -I/usr/lib/x86_64-linux-gnu/gdkmm-2.4/include -I/usr/include/atk-1.0 -I/usr/include/glibmm-2.4 -I/usr/lib/x86_64-linux-gnu/glibmm-2.4/include -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sigc++-2.0 -I/usr/lib/x86_64-linux-gnu/sigc++-2.0/include -I/usr/include/cairomm-1.0 -I/usr/lib/x86_64-linux-gnu/cairomm-1.0/include -I/usr/include/pango-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gio-unix-2.0/  '
+pkg_cv_GTKMM_LIBS='-lgtkmm-2.4 -latkmm-1.6 -lgdkmm-2.4 -lgiomm-2.4 -lpangomm-1.4 -lgtk-x11-2.0 -lglibmm-2.4 -lcairomm-1.0 -lsigc-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lglib-2.0  '
 pkg_cv_LIBJSONCPP_CFLAGS='-I/usr/include/jsoncpp  '
 pkg_cv_LIBJSONCPP_LIBS='-ljsoncpp  '
 pkg_cv_LIBSIGC_CFLAGS='-I/usr/include/sigc++-2.0 -I/usr/lib/x86_64-linux-gnu/sigc++-2.0/include  '
@@ -263,6 +275,8 @@ ECHO_C=''
 ECHO_N='-n'
 ECHO_T=''
 EXEEXT=''
+GTKMM_CFLAGS='-pthread -I/usr/include/gtkmm-2.4 -I/usr/lib/x86_64-linux-gnu/gtkmm-2.4/include -I/usr/include/atkmm-1.6 -I/usr/include/giomm-2.4 -I/usr/lib/x86_64-linux-gnu/giomm-2.4/include -I/usr/include/pangomm-1.4 -I/usr/lib/x86_64-linux-gnu/pangomm-1.4/include -I/usr/include/gtk-2.0 -I/usr/include/gtk-unix-print-2.0 -I/usr/include/gdkmm-2.4 -I/usr/lib/x86_64-linux-gnu/gdkmm-2.4/include -I/usr/include/atk-1.0 -I/usr/include/glibmm-2.4 -I/usr/lib/x86_64-linux-gnu/glibmm-2.4/include -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sigc++-2.0 -I/usr/lib/x86_64-linux-gnu/sigc++-2.0/include -I/usr/include/cairomm-1.0 -I/usr/lib/x86_64-linux-gnu/cairomm-1.0/include -I/usr/include/pango-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gio-unix-2.0/  '
+GTKMM_LIBS='-lgtkmm-2.4 -latkmm-1.6 -lgdkmm-2.4 -lgiomm-2.4 -lpangomm-1.4 -lgtk-x11-2.0 -lglibmm-2.4 -lcairomm-1.0 -lsigc-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lglib-2.0  '
 INSTALL_DATA='${INSTALL} -m 644'
 INSTALL_PROGRAM='${INSTALL}'
 INSTALL_SCRIPT='${INSTALL}'
@@ -365,10 +379,10 @@ generated by GNU Autoconf 2.68.  Invocation command line was
 
 on deptop
 
-config.status:858: creating Makefile
-config.status:858: creating config.h
-config.status:1039: config.h is unchanged
-config.status:1087: executing depfiles commands
+config.status:867: creating Makefile
+config.status:867: creating config.h
+config.status:1048: config.h is unchanged
+config.status:1096: executing depfiles commands
 
 ## ---------------------- ##
 ## Running config.status. ##
@@ -385,4 +399,221 @@ generated by GNU Autoconf 2.68.  Invocation command line was
 
 on deptop
 
-config.status:858: creating config.h
+config.status:867: creating config.h
+config.status:1048: config.h is unchanged
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by FULL-PACKAGE-NAME config.status VERSION, which was
+generated by GNU Autoconf 2.68.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status Makefile depfiles
+
+on deptop
+
+config.status:867: creating Makefile
+config.status:1096: executing depfiles commands

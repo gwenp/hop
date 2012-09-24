@@ -1,4 +1,5 @@
-hop-main.o: src/main.cpp /usr/include/c++/4.6/string \
+hop-CairoDrawer.o: src/utils/CairoDrawer.cpp src/utils/CairoDrawer.hpp \
+ /usr/include/c++/4.6/string \
  /usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++config.h \
  /usr/include/c++/4.6/x86_64-linux-gnu/./bits/os_defines.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
@@ -85,69 +86,7 @@ hop-main.o: src/main.cpp /usr/include/c++/4.6/string \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/c++/4.6/bits/functional_hash.h \
  /usr/include/c++/4.6/bits/hash_bytes.h \
- /usr/include/c++/4.6/bits/basic_string.tcc /usr/include/c++/4.6/fstream \
- /usr/include/c++/4.6/istream /usr/include/c++/4.6/ios \
- /usr/include/c++/4.6/bits/ios_base.h \
- /usr/include/c++/4.6/bits/locale_classes.h \
- /usr/include/c++/4.6/bits/locale_classes.tcc \
- /usr/include/c++/4.6/streambuf /usr/include/c++/4.6/bits/streambuf.tcc \
- /usr/include/c++/4.6/bits/basic_ios.h \
- /usr/include/c++/4.6/bits/locale_facets.h /usr/include/c++/4.6/cwctype \
- /usr/include/wctype.h \
- /usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_base.h \
- /usr/include/c++/4.6/bits/streambuf_iterator.h \
- /usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_inline.h \
- /usr/include/c++/4.6/bits/locale_facets.tcc \
- /usr/include/c++/4.6/bits/basic_ios.tcc /usr/include/c++/4.6/ostream \
- /usr/include/c++/4.6/bits/ostream.tcc \
- /usr/include/c++/4.6/bits/istream.tcc \
- /usr/include/c++/4.6/bits/codecvt.h \
- /usr/include/c++/4.6/x86_64-linux-gnu/./bits/basic_file.h \
- /usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++io.h \
- /usr/include/c++/4.6/bits/fstream.tcc src/Generator/Generator.hpp \
- src/Generator/../Debug/Dbg.hpp /usr/include/c++/4.6/vector \
- /usr/include/c++/4.6/bits/stl_construct.h \
- /usr/include/c++/4.6/bits/stl_uninitialized.h \
- /usr/include/c++/4.6/bits/stl_vector.h \
- /usr/include/c++/4.6/bits/stl_bvector.h \
- /usr/include/c++/4.6/bits/vector.tcc /usr/include/jsoncpp/json/json.h \
- /usr/include/jsoncpp/json/autolink.h /usr/include/jsoncpp/json/config.h \
- /usr/include/jsoncpp/json/value.h /usr/include/jsoncpp/json/forwards.h \
- /usr/include/c++/4.6/map /usr/include/c++/4.6/bits/stl_tree.h \
- /usr/include/c++/4.6/bits/stl_map.h \
- /usr/include/c++/4.6/bits/stl_multimap.h \
- /usr/include/jsoncpp/json/reader.h /usr/include/jsoncpp/json/features.h \
- /usr/include/c++/4.6/deque /usr/include/c++/4.6/bits/stl_deque.h \
- /usr/include/c++/4.6/bits/deque.tcc /usr/include/c++/4.6/stack \
- /usr/include/c++/4.6/bits/stl_stack.h /usr/include/c++/4.6/iostream \
- /usr/include/jsoncpp/json/writer.h /usr/include/c++/4.6/algorithm \
- /usr/include/c++/4.6/utility /usr/include/c++/4.6/bits/stl_relops.h \
- /usr/include/c++/4.6/bits/stl_algo.h \
- /usr/include/c++/4.6/bits/algorithmfwd.h \
- /usr/include/c++/4.6/bits/stl_heap.h \
- /usr/include/c++/4.6/bits/stl_tempbuf.h /usr/include/c++/4.6/random \
- /usr/include/c++/4.6/cmath /usr/include/math.h \
- /usr/include/x86_64-linux-gnu/bits/huge_val.h \
- /usr/include/x86_64-linux-gnu/bits/huge_valf.h \
- /usr/include/x86_64-linux-gnu/bits/huge_vall.h \
- /usr/include/x86_64-linux-gnu/bits/inf.h \
- /usr/include/x86_64-linux-gnu/bits/nan.h \
- /usr/include/x86_64-linux-gnu/bits/mathdef.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /usr/include/x86_64-linux-gnu/bits/mathinline.h \
- /usr/include/c++/4.6/limits /usr/include/c++/4.6/bits/random.h \
- /usr/include/c++/4.6/bits/random.tcc /usr/include/c++/4.6/numeric \
- /usr/include/c++/4.6/bits/stl_numeric.h /usr/include/c++/4.6/functional \
- /usr/include/c++/4.6/typeinfo /usr/include/c++/4.6/tuple \
- src/GUI/GtkMain.hpp src/GUI/../Debug/Dbg.hpp \
- src/GUI/UMLDiagramWidget/UMLDiagramWidget.hpp \
- src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLClass.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLMember.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp \
- src/GUI/UMLDiagramWidget/UML/../../../Debug/Dbg.hpp \
- src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp \
+ /usr/include/c++/4.6/bits/basic_string.tcc \
  /usr/include/gtkmm-2.4/gtkmm.h /usr/include/glibmm-2.4/glibmm.h \
  /usr/lib/x86_64-linux-gnu/glibmm-2.4/include/glibmmconfig.h \
  /usr/include/glibmm-2.4/glibmm/thread.h /usr/include/glib-2.0/glib.h \
@@ -233,6 +172,21 @@ hop-main.o: src/main.cpp /usr/include/c++/4.6/string \
  /usr/include/glibmm-2.4/glibmm/exception.h \
  /usr/include/glibmm-2.4/glibmm/ustring.h \
  /usr/include/glibmm-2.4/glibmm/unicode.h /usr/include/c++/4.6/iterator \
+ /usr/include/c++/4.6/ostream /usr/include/c++/4.6/ios \
+ /usr/include/c++/4.6/bits/ios_base.h \
+ /usr/include/c++/4.6/bits/locale_classes.h \
+ /usr/include/c++/4.6/bits/locale_classes.tcc \
+ /usr/include/c++/4.6/streambuf /usr/include/c++/4.6/bits/streambuf.tcc \
+ /usr/include/c++/4.6/bits/basic_ios.h \
+ /usr/include/c++/4.6/bits/locale_facets.h /usr/include/c++/4.6/cwctype \
+ /usr/include/wctype.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_base.h \
+ /usr/include/c++/4.6/bits/streambuf_iterator.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_inline.h \
+ /usr/include/c++/4.6/bits/locale_facets.tcc \
+ /usr/include/c++/4.6/bits/basic_ios.tcc \
+ /usr/include/c++/4.6/bits/ostream.tcc /usr/include/c++/4.6/istream \
+ /usr/include/c++/4.6/bits/istream.tcc \
  /usr/include/c++/4.6/bits/stream_iterator.h /usr/include/c++/4.6/sstream \
  /usr/include/c++/4.6/bits/sstream.tcc \
  /usr/include/glibmm-2.4/glibmm/timeval.h \
@@ -300,9 +254,36 @@ hop-main.o: src/main.cpp /usr/include/c++/4.6/string \
  /usr/include/glibmm-2.4/glibmm/propertyproxy_base.h \
  /usr/include/glibmm-2.4/glibmm/value.h \
  /usr/include/glibmm-2.4/glibmm/value_custom.h \
+ /usr/include/c++/4.6/typeinfo \
  /usr/include/glibmm-2.4/glibmm/value_basictypes.h \
  /usr/include/glibmm-2.4/glibmm/quark.h \
- /usr/include/glibmm-2.4/glibmm/debug.h \
+ /usr/include/glibmm-2.4/glibmm/debug.h /usr/include/c++/4.6/algorithm \
+ /usr/include/c++/4.6/utility /usr/include/c++/4.6/bits/stl_relops.h \
+ /usr/include/c++/4.6/bits/stl_algo.h \
+ /usr/include/c++/4.6/bits/algorithmfwd.h \
+ /usr/include/c++/4.6/bits/stl_heap.h \
+ /usr/include/c++/4.6/bits/stl_tempbuf.h \
+ /usr/include/c++/4.6/bits/stl_construct.h /usr/include/c++/4.6/random \
+ /usr/include/c++/4.6/cmath /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_val.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_valf.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_vall.h \
+ /usr/include/x86_64-linux-gnu/bits/inf.h \
+ /usr/include/x86_64-linux-gnu/bits/nan.h \
+ /usr/include/x86_64-linux-gnu/bits/mathdef.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/include/x86_64-linux-gnu/bits/mathinline.h \
+ /usr/include/c++/4.6/limits /usr/include/c++/4.6/bits/random.h \
+ /usr/include/c++/4.6/vector \
+ /usr/include/c++/4.6/bits/stl_uninitialized.h \
+ /usr/include/c++/4.6/bits/stl_vector.h \
+ /usr/include/c++/4.6/bits/stl_bvector.h \
+ /usr/include/c++/4.6/bits/vector.tcc \
+ /usr/include/c++/4.6/bits/random.tcc /usr/include/c++/4.6/numeric \
+ /usr/include/c++/4.6/bits/stl_numeric.h /usr/include/c++/4.6/functional \
+ /usr/include/c++/4.6/tuple /usr/include/c++/4.6/deque \
+ /usr/include/c++/4.6/bits/stl_deque.h \
+ /usr/include/c++/4.6/bits/deque.tcc \
  /usr/include/glibmm-2.4/glibmm/balancedtree.h \
  /usr/include/glibmm-2.4/glibmm/checksum.h \
  /usr/include/glibmm-2.4/glibmm/class.h \
@@ -324,10 +305,13 @@ hop-main.o: src/main.cpp /usr/include/c++/4.6/string \
  /usr/include/glibmm-2.4/glibmm/keyfile.h \
  /usr/include/glibmm-2.4/glibmm/streamiochannel.h \
  /usr/include/glibmm-2.4/glibmm/listhandle.h \
- /usr/include/glibmm-2.4/glibmm/markup.h \
+ /usr/include/glibmm-2.4/glibmm/markup.h /usr/include/c++/4.6/map \
+ /usr/include/c++/4.6/bits/stl_tree.h /usr/include/c++/4.6/bits/stl_map.h \
+ /usr/include/c++/4.6/bits/stl_multimap.h \
  /usr/include/glibmm-2.4/glibmm/miscutils.h \
  /usr/include/glibmm-2.4/glibmm/module.h \
- /usr/include/glibmm-2.4/glibmm/nodetree.h \
+ /usr/include/glibmm-2.4/glibmm/nodetree.h /usr/include/c++/4.6/stack \
+ /usr/include/c++/4.6/bits/stl_stack.h \
  /usr/include/glibmm-2.4/glibmm/optioncontext.h \
  /usr/include/glibmm-2.4/glibmm/optionentry.h \
  /usr/include/glibmm-2.4/glibmm/optiongroup.h \
@@ -1129,10 +1113,9 @@ hop-main.o: src/main.cpp /usr/include/c++/4.6/string \
  /usr/include/gtkmm-2.4/gtkmm/treestore.h \
  /usr/include/gtkmm-2.4/gtkmm/uimanager.h \
  /usr/include/gtkmm-2.4/gtkmm/actiongroup.h \
- /usr/include/gtkmm-2.4/gtkmm/viewport.h \
- src/GUI/UMLDiagramWidget/PropertySignatureEditor.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp \
- src/GUI/UMLDiagramWidget/../../Debug/Dbg.hpp src/Debug/Dbg.hpp
+ /usr/include/gtkmm-2.4/gtkmm/viewport.h
+
+src/utils/CairoDrawer.hpp:
 
 /usr/include/c++/4.6/string:
 
@@ -1360,178 +1343,6 @@ hop-main.o: src/main.cpp /usr/include/c++/4.6/string \
 
 /usr/include/c++/4.6/bits/basic_string.tcc:
 
-/usr/include/c++/4.6/fstream:
-
-/usr/include/c++/4.6/istream:
-
-/usr/include/c++/4.6/ios:
-
-/usr/include/c++/4.6/bits/ios_base.h:
-
-/usr/include/c++/4.6/bits/locale_classes.h:
-
-/usr/include/c++/4.6/bits/locale_classes.tcc:
-
-/usr/include/c++/4.6/streambuf:
-
-/usr/include/c++/4.6/bits/streambuf.tcc:
-
-/usr/include/c++/4.6/bits/basic_ios.h:
-
-/usr/include/c++/4.6/bits/locale_facets.h:
-
-/usr/include/c++/4.6/cwctype:
-
-/usr/include/wctype.h:
-
-/usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_base.h:
-
-/usr/include/c++/4.6/bits/streambuf_iterator.h:
-
-/usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_inline.h:
-
-/usr/include/c++/4.6/bits/locale_facets.tcc:
-
-/usr/include/c++/4.6/bits/basic_ios.tcc:
-
-/usr/include/c++/4.6/ostream:
-
-/usr/include/c++/4.6/bits/ostream.tcc:
-
-/usr/include/c++/4.6/bits/istream.tcc:
-
-/usr/include/c++/4.6/bits/codecvt.h:
-
-/usr/include/c++/4.6/x86_64-linux-gnu/./bits/basic_file.h:
-
-/usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++io.h:
-
-/usr/include/c++/4.6/bits/fstream.tcc:
-
-src/Generator/Generator.hpp:
-
-src/Generator/../Debug/Dbg.hpp:
-
-/usr/include/c++/4.6/vector:
-
-/usr/include/c++/4.6/bits/stl_construct.h:
-
-/usr/include/c++/4.6/bits/stl_uninitialized.h:
-
-/usr/include/c++/4.6/bits/stl_vector.h:
-
-/usr/include/c++/4.6/bits/stl_bvector.h:
-
-/usr/include/c++/4.6/bits/vector.tcc:
-
-/usr/include/jsoncpp/json/json.h:
-
-/usr/include/jsoncpp/json/autolink.h:
-
-/usr/include/jsoncpp/json/config.h:
-
-/usr/include/jsoncpp/json/value.h:
-
-/usr/include/jsoncpp/json/forwards.h:
-
-/usr/include/c++/4.6/map:
-
-/usr/include/c++/4.6/bits/stl_tree.h:
-
-/usr/include/c++/4.6/bits/stl_map.h:
-
-/usr/include/c++/4.6/bits/stl_multimap.h:
-
-/usr/include/jsoncpp/json/reader.h:
-
-/usr/include/jsoncpp/json/features.h:
-
-/usr/include/c++/4.6/deque:
-
-/usr/include/c++/4.6/bits/stl_deque.h:
-
-/usr/include/c++/4.6/bits/deque.tcc:
-
-/usr/include/c++/4.6/stack:
-
-/usr/include/c++/4.6/bits/stl_stack.h:
-
-/usr/include/c++/4.6/iostream:
-
-/usr/include/jsoncpp/json/writer.h:
-
-/usr/include/c++/4.6/algorithm:
-
-/usr/include/c++/4.6/utility:
-
-/usr/include/c++/4.6/bits/stl_relops.h:
-
-/usr/include/c++/4.6/bits/stl_algo.h:
-
-/usr/include/c++/4.6/bits/algorithmfwd.h:
-
-/usr/include/c++/4.6/bits/stl_heap.h:
-
-/usr/include/c++/4.6/bits/stl_tempbuf.h:
-
-/usr/include/c++/4.6/random:
-
-/usr/include/c++/4.6/cmath:
-
-/usr/include/math.h:
-
-/usr/include/x86_64-linux-gnu/bits/huge_val.h:
-
-/usr/include/x86_64-linux-gnu/bits/huge_valf.h:
-
-/usr/include/x86_64-linux-gnu/bits/huge_vall.h:
-
-/usr/include/x86_64-linux-gnu/bits/inf.h:
-
-/usr/include/x86_64-linux-gnu/bits/nan.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathdef.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathinline.h:
-
-/usr/include/c++/4.6/limits:
-
-/usr/include/c++/4.6/bits/random.h:
-
-/usr/include/c++/4.6/bits/random.tcc:
-
-/usr/include/c++/4.6/numeric:
-
-/usr/include/c++/4.6/bits/stl_numeric.h:
-
-/usr/include/c++/4.6/functional:
-
-/usr/include/c++/4.6/typeinfo:
-
-/usr/include/c++/4.6/tuple:
-
-src/GUI/GtkMain.hpp:
-
-src/GUI/../Debug/Dbg.hpp:
-
-src/GUI/UMLDiagramWidget/UMLDiagramWidget.hpp:
-
-src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.hpp:
-
-src/GUI/UMLDiagramWidget/UML/UMLClass.hpp:
-
-src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp:
-
-src/GUI/UMLDiagramWidget/UML/UMLMember.hpp:
-
-src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp:
-
-src/GUI/UMLDiagramWidget/UML/../../../Debug/Dbg.hpp:
-
-src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp:
-
 /usr/include/gtkmm-2.4/gtkmm.h:
 
 /usr/include/glibmm-2.4/glibmm.h:
@@ -1736,6 +1547,44 @@ src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp:
 
 /usr/include/c++/4.6/iterator:
 
+/usr/include/c++/4.6/ostream:
+
+/usr/include/c++/4.6/ios:
+
+/usr/include/c++/4.6/bits/ios_base.h:
+
+/usr/include/c++/4.6/bits/locale_classes.h:
+
+/usr/include/c++/4.6/bits/locale_classes.tcc:
+
+/usr/include/c++/4.6/streambuf:
+
+/usr/include/c++/4.6/bits/streambuf.tcc:
+
+/usr/include/c++/4.6/bits/basic_ios.h:
+
+/usr/include/c++/4.6/bits/locale_facets.h:
+
+/usr/include/c++/4.6/cwctype:
+
+/usr/include/wctype.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_base.h:
+
+/usr/include/c++/4.6/bits/streambuf_iterator.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_inline.h:
+
+/usr/include/c++/4.6/bits/locale_facets.tcc:
+
+/usr/include/c++/4.6/bits/basic_ios.tcc:
+
+/usr/include/c++/4.6/bits/ostream.tcc:
+
+/usr/include/c++/4.6/istream:
+
+/usr/include/c++/4.6/bits/istream.tcc:
+
 /usr/include/c++/4.6/bits/stream_iterator.h:
 
 /usr/include/c++/4.6/sstream:
@@ -1876,11 +1725,81 @@ src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp:
 
 /usr/include/glibmm-2.4/glibmm/value_custom.h:
 
+/usr/include/c++/4.6/typeinfo:
+
 /usr/include/glibmm-2.4/glibmm/value_basictypes.h:
 
 /usr/include/glibmm-2.4/glibmm/quark.h:
 
 /usr/include/glibmm-2.4/glibmm/debug.h:
+
+/usr/include/c++/4.6/algorithm:
+
+/usr/include/c++/4.6/utility:
+
+/usr/include/c++/4.6/bits/stl_relops.h:
+
+/usr/include/c++/4.6/bits/stl_algo.h:
+
+/usr/include/c++/4.6/bits/algorithmfwd.h:
+
+/usr/include/c++/4.6/bits/stl_heap.h:
+
+/usr/include/c++/4.6/bits/stl_tempbuf.h:
+
+/usr/include/c++/4.6/bits/stl_construct.h:
+
+/usr/include/c++/4.6/random:
+
+/usr/include/c++/4.6/cmath:
+
+/usr/include/math.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_val.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_valf.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_vall.h:
+
+/usr/include/x86_64-linux-gnu/bits/inf.h:
+
+/usr/include/x86_64-linux-gnu/bits/nan.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathdef.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathinline.h:
+
+/usr/include/c++/4.6/limits:
+
+/usr/include/c++/4.6/bits/random.h:
+
+/usr/include/c++/4.6/vector:
+
+/usr/include/c++/4.6/bits/stl_uninitialized.h:
+
+/usr/include/c++/4.6/bits/stl_vector.h:
+
+/usr/include/c++/4.6/bits/stl_bvector.h:
+
+/usr/include/c++/4.6/bits/vector.tcc:
+
+/usr/include/c++/4.6/bits/random.tcc:
+
+/usr/include/c++/4.6/numeric:
+
+/usr/include/c++/4.6/bits/stl_numeric.h:
+
+/usr/include/c++/4.6/functional:
+
+/usr/include/c++/4.6/tuple:
+
+/usr/include/c++/4.6/deque:
+
+/usr/include/c++/4.6/bits/stl_deque.h:
+
+/usr/include/c++/4.6/bits/deque.tcc:
 
 /usr/include/glibmm-2.4/glibmm/balancedtree.h:
 
@@ -1926,11 +1845,23 @@ src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp:
 
 /usr/include/glibmm-2.4/glibmm/markup.h:
 
+/usr/include/c++/4.6/map:
+
+/usr/include/c++/4.6/bits/stl_tree.h:
+
+/usr/include/c++/4.6/bits/stl_map.h:
+
+/usr/include/c++/4.6/bits/stl_multimap.h:
+
 /usr/include/glibmm-2.4/glibmm/miscutils.h:
 
 /usr/include/glibmm-2.4/glibmm/module.h:
 
 /usr/include/glibmm-2.4/glibmm/nodetree.h:
+
+/usr/include/c++/4.6/stack:
+
+/usr/include/c++/4.6/bits/stl_stack.h:
 
 /usr/include/glibmm-2.4/glibmm/optioncontext.h:
 
@@ -3641,11 +3572,3 @@ src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp:
 /usr/include/gtkmm-2.4/gtkmm/actiongroup.h:
 
 /usr/include/gtkmm-2.4/gtkmm/viewport.h:
-
-src/GUI/UMLDiagramWidget/PropertySignatureEditor.hpp:
-
-src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp:
-
-src/GUI/UMLDiagramWidget/../../Debug/Dbg.hpp:
-
-src/Debug/Dbg.hpp:
