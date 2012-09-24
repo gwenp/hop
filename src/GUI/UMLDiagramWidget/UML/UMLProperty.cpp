@@ -1,6 +1,6 @@
 #include "UMLProperty.hpp"
 
-UMLProperty::UMLProperty(std::string name) : UMLMember(name)
+UMLProperty::UMLProperty(Visibility visibility, std::string type, std::string name) : UMLMember(visibility, type, name)
 {
 
 }

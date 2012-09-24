@@ -1,6 +1,6 @@
 #include "UMLMethod.hpp"
 
-UMLMethod::UMLMethod(std::string name) : UMLMember(name)
+UMLMethod::UMLMethod(Visibility visibility, std::string type, std::string name) : UMLMember(visibility, type, name)
 {
 
 }

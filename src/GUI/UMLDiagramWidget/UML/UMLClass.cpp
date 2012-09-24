@@ -11,9 +11,9 @@ UMLClass::UMLClass(int x, int y)
 	: _x(x), _y(y), _w(56), _h(56), _name("untitled")
 {
 	Dbg::out("ctor") << "UMLClass::ctor2" << std::endl;
-	addMethod(new UMLMethod("ctor"));
-	addMethod(new UMLMethod("addElement"));
-	addPropery(new UMLProperty("getElement"));
+	addMethod(new UMLMethod(PUBLIC, "null", "ctor"));
+	addMethod(new UMLMethod(PROTECTED, "int", "addElement"));
+	addPropery(new UMLProperty(PRIVATE, "void", "getElement"));
 }
 
 void UMLClass::draw(Gtk::DrawingArea* drawingArea)

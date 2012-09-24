@@ -16,6 +16,9 @@ public:
 
 private:
 	UMLMethod* _method;
+	
+	Gtk::ComboBoxText* _comboVisibility;
+	Gtk::Entry* _entryType;
 	Gtk::Entry* _entryName;
 };
 

@@ -16,7 +16,10 @@ public:
 
 private:
 	UMLProperty* _property;
+
+	Gtk::ComboBoxText* _comboVisibility;
 	Gtk::Entry* _entryName;
+	Gtk::Entry* _entryType;
 };
 
 #endif /* PROPERTYSIGNATUREEDITOR_HPP */

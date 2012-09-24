@@ -8,7 +8,7 @@
 class UMLMethod : public UMLMember
 {
 public:
-	UMLMethod(std::string name);
+	UMLMethod(Visibility visibility, std::string type, std::string name);
 	~UMLMethod();
 
 private:
