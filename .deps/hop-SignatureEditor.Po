@@ -1,7 +1,6 @@
-hop-PropertySignatureEditor.o: \
- src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp \
- src/GUI/UMLDiagramWidget/PropertySignatureEditor.hpp \
- /usr/include/c++/4.6/vector /usr/include/c++/4.6/bits/stl_algobase.h \
+hop-SignatureEditor.o: src/GUI/UMLDiagramWidget/SignatureEditor.cpp \
+ src/GUI/UMLDiagramWidget/SignatureEditor.hpp /usr/include/c++/4.6/vector \
+ /usr/include/c++/4.6/bits/stl_algobase.h \
  /usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++config.h \
  /usr/include/c++/4.6/x86_64-linux-gnu/./bits/os_defines.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
@@ -1115,10 +1114,9 @@ hop-PropertySignatureEditor.o: \
  /usr/include/gtkmm-2.4/gtkmm/actiongroup.h \
  /usr/include/gtkmm-2.4/gtkmm/viewport.h \
  src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLMember.hpp \
- src/GUI/UMLDiagramWidget/SignatureEditor.hpp
+ src/GUI/UMLDiagramWidget/UML/UMLMember.hpp
 
-src/GUI/UMLDiagramWidget/PropertySignatureEditor.hpp:
+src/GUI/UMLDiagramWidget/SignatureEditor.hpp:
 
 /usr/include/c++/4.6/vector:
 
@@ -3579,5 +3577,3 @@ src/GUI/UMLDiagramWidget/PropertySignatureEditor.hpp:
 src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp:
 
 src/GUI/UMLDiagramWidget/UML/UMLMember.hpp:
-
-src/GUI/UMLDiagramWidget/SignatureEditor.hpp:

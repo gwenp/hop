@@ -1115,7 +1115,9 @@ hop-MethodSignatureEditor.o: \
  /usr/include/gtkmm-2.4/gtkmm/actiongroup.h \
  /usr/include/gtkmm-2.4/gtkmm/viewport.h \
  src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLMember.hpp
+ src/GUI/UMLDiagramWidget/UML/UMLMember.hpp \
+ src/GUI/UMLDiagramWidget/SignatureEditor.hpp \
+ src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp
 
 src/GUI/UMLDiagramWidget/MethodSignatureEditor.hpp:
 
@@ -3578,3 +3580,7 @@ src/GUI/UMLDiagramWidget/MethodSignatureEditor.hpp:
 src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp:
 
 src/GUI/UMLDiagramWidget/UML/UMLMember.hpp:
+
+src/GUI/UMLDiagramWidget/SignatureEditor.hpp:
+
+src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp:
