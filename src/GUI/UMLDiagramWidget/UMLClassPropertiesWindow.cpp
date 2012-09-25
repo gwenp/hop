@@ -10,6 +10,9 @@ UMLClassPropertiesWindow::UMLClassPropertiesWindow(BaseObjectType* cobject, cons
 	builder->get_widget("addPropertyButton",_addPropertyButton);
 	builder->get_widget("addMethodButton",_addMethodButton);
 
+	_addPropertyButton->signal_button_press_event().connect(sigc::mem_fun(*this, &UMLClassPropertiesWindow::on_addPropertyButtonButton_clicked), false);
+	_addMethodButton->signal_button_press_event().connect(sigc::mem_fun(*this, &UMLClassPropertiesWindow::on_addMethodButtonButton_clicked), false);
+	
 	_applyButton->signal_button_press_event().connect(sigc::mem_fun(*this, &UMLClassPropertiesWindow::on_applyButton_clicked), false);
 	_cancelButton->signal_button_press_event().connect(sigc::mem_fun(*this, &UMLClassPropertiesWindow::on_cancelButton_clicked), false);
 
@@ -45,9 +48,49 @@ void UMLClassPropertiesWindow::setUMLClass(UMLClass* theClass)
 	}
 }
 
+
+bool UMLClassPropertiesWindow::on_addPropertyButtonButton_clicked(GdkEventButton* event)
+{
+	UMLProperty* p = new UMLProperty(PRIVATE, "int", "_prop");
+	_pendingProperties.push_back(p);
+	
+	PropertySignatureEditor* newPropertyEditor = new PropertySignatureEditor(p);
+	_signatureEditors.push_back(newPropertyEditor);
+	_properties_vbox->pack_start(*newPropertyEditor, false,true);
+	newPropertyEditor->show();
+}
+
+bool UMLClassPropertiesWindow::on_addMethodButtonButton_clicked(GdkEventButton* event)
+{
+	UMLMethod* m = new UMLMethod(PUBLIC, "int", "method");
+	_pendingMethods.push_back(m);
+
+
+	MethodSignatureEditor* newMethodEditor = new MethodSignatureEditor(m);
+	_signatureEditors.push_back(newMethodEditor);
+	_methods_vbox->pack_start(*newMethodEditor, false,true);
+	newMethodEditor->show();
+}
+
 bool UMLClassPropertiesWindow::on_applyButton_clicked(GdkEventButton* event)
 {
 	_theClass->setName(_classNameEntry->get_text());
+	
+	for (std::vector<SignatureEditor*>::iterator it = _signatureEditors.begin(); it != _signatureEditors.end(); ++it)
+	{
+		(*it)->applyChanges();
+	}
+
+	for (std::vector<UMLMethod*>::iterator it = _pendingMethods.begin(); it != _pendingMethods.end(); ++it)
+	{
+		_theClass->addMethod(*it);
+	}
+
+	for (std::vector<UMLProperty*>::iterator it = _pendingProperties.begin(); it != _pendingProperties.end(); ++it)
+	{
+		_theClass->addProperty(*it);
+	}
+
 	_mainWidget->queue_draw();
 	hideWindow();
 }
@@ -59,5 +102,12 @@ bool UMLClassPropertiesWindow::on_cancelButton_clicked(GdkEventButton* event)
 
 void UMLClassPropertiesWindow::hideWindow()
 {
+	//Reset dynamic containers for later use
+	_methods_vbox->children().erase(_methods_vbox->children().begin(),_methods_vbox->children().end());
+	_properties_vbox->children().erase(_properties_vbox->children().begin(),_properties_vbox->children().end());
+
+	_pendingMethods.clear();
+	_pendingProperties.clear();
+
 	hide();
 }

@@ -28,17 +28,29 @@ void CairoDrawer::drawRectangle(Glib::RefPtr<Gdk::Window> window, int x, int y, 
 	cr->stroke();
 }
 
-void CairoDrawer::drawText(Glib::RefPtr<Gdk::Window> window, int x, int y, std::string text)
+Rect CairoDrawer::drawText(Glib::RefPtr<Gdk::Window> window, int x, int y, std::string text, std::string fontDescription)
 {
+	Rect r;
+	r.x = x;
+	r.y = y;
+
 	Cairo::RefPtr<Cairo::Context> cr = window->create_cairo_context();
 
 	Glib::RefPtr<Pango::Layout> pangoLayout = Pango::Layout::create (cr);
 
 	cr->move_to(x,y);
+
+ 	Pango::FontDescription font_desc(fontDescription);
+  	pangoLayout->set_font_description(font_desc);
+
 	pangoLayout->set_text(text);
+	pangoLayout->get_pixel_size(r.w, r.h);
+
 	pangoLayout->update_from_cairo_context(cr);  //gets cairo cursor position
 	pangoLayout->add_to_cairo_context(cr);
 
 	cr->fill();
+
+	return r;
 }
 

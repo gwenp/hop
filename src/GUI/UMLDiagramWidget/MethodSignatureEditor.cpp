@@ -1,7 +1,7 @@
 #include "MethodSignatureEditor.hpp"
 
 MethodSignatureEditor::MethodSignatureEditor(UMLMethod* method)
-	: _method(method)
+	: SignatureEditor(), _method(method)
 {
 	_comboVisibility = new Gtk::ComboBoxText();
 	pack_start(*_comboVisibility, false,true);
@@ -9,13 +9,26 @@ MethodSignatureEditor::MethodSignatureEditor(UMLMethod* method)
 	_comboVisibility->append_text("Protected");
 	_comboVisibility->append_text("Private");
 
+	switch(method->getVisibility())
+	{
+		case PUBLIC:
+			_comboVisibility->set_active_text("Public");
+			break;
+		case PROTECTED:
+			_comboVisibility->set_active_text("Protected");
+			break;
+		case PRIVATE:
+			_comboVisibility->set_active_text("Private");
+			break;
+	}
+
 	_entryType = new Gtk::Entry();
 	_entryType->set_text(method->getType());
 	pack_start(*_entryType, false,true);
 
 	_entryName = new Gtk::Entry();
 	_entryName->set_text(method->getName());
-	pack_start(*_entryName, false,true);
+	pack_start(*_entryName, true,true);
 
 	show_all_children();
 }
@@ -25,3 +38,8 @@ MethodSignatureEditor::~MethodSignatureEditor()
 
 }
 
+void MethodSignatureEditor::applyChanges()
+{
+	_method->setName(_entryName->get_text());
+	_method->setType(_entryType->get_text());
+}

@@ -7,13 +7,15 @@
 #include <gtkmm.h>
 
 #include "UML/UMLProperty.hpp"
+#include "SignatureEditor.hpp"
 
-class PropertySignatureEditor : public Gtk::HBox
+class PropertySignatureEditor : public SignatureEditor
 {
 public:
 	PropertySignatureEditor(UMLProperty* property);
 	~PropertySignatureEditor();
 
+	void applyChanges();
 private:
 	UMLProperty* _property;
 

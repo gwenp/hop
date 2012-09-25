@@ -9,10 +9,12 @@ hop_SOURCES = 	src/main.cpp \
 		src/Generator/Generator.cpp \
 		src/GUI/GtkMain.cpp \
 		src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp \
+		src/GUI/UMLDiagramWidget/SignatureEditor.cpp \
 		src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp \
 		src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLClass.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp \
+		src/GUI/UMLDiagramWidget/UML/UMLLink.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLMember.cpp \
 		src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp \

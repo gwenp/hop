@@ -7,12 +7,15 @@
 #include <gtkmm.h>
 
 #include "UML/UMLMethod.hpp"
+#include "SignatureEditor.hpp"
 
-class MethodSignatureEditor : public Gtk::HBox
+class MethodSignatureEditor : public SignatureEditor
 {
 public:
 	MethodSignatureEditor(UMLMethod* method);
 	~MethodSignatureEditor();
+
+	void applyChanges();
 
 private:
 	UMLMethod* _method;

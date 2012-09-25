@@ -1,11 +1,13 @@
 #include "UMLDiagramWidget.hpp"
 
-UMLDiagramWidget::UMLDiagramWidget(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder): Gtk::DrawingArea(cobject)
+UMLDiagramWidget::UMLDiagramWidget(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder): Gtk::DrawingArea(cobject), _isLinkStarted(false), _mouseButtonPressed(0)
 {
 	add_events( Gdk::BUTTON_PRESS_MASK | Gdk::BUTTON_RELEASE_MASK | Gdk::POINTER_MOTION_MASK);
 
 	signal_expose_event().connect(sigc::mem_fun(*this, &UMLDiagramWidget::on_expose_event), false);
 	signal_button_press_event().connect(sigc::mem_fun(*this, &UMLDiagramWidget::on_button_press_event), false);
+	signal_button_release_event().connect(sigc::mem_fun(*this, &UMLDiagramWidget::on_button_release_event), false);
+	signal_motion_notify_event().connect(sigc::mem_fun(*this, &UMLDiagramWidget::on_mouse_motion_event), false);
 
   	std::cout << "UMLDiagramWidget::ctor" << std::endl;
 
@@ -14,7 +16,6 @@ UMLDiagramWidget::UMLDiagramWidget(BaseObjectType* cobject, const Glib::RefPtr<G
 	menulist.push_back( Gtk::Menu_Helpers::MenuElem("Properties",sigc::mem_fun(*this, &UMLDiagramWidget::on_UMLClass_openProperties) ) );
 
     widgetBuilder = Gtk::Builder::create_from_file("res/UMLDiagramWidget_classProperties.glade");
-
 }
 
 UMLDiagramWidget::~UMLDiagramWidget()
@@ -52,12 +53,13 @@ bool UMLDiagramWidget::on_expose_event(GdkEventExpose* event)
 		cr->fill();
 	
 		cr->set_source_rgb(0.86, 0.85, 0.47);
-		for (std::vector<UMLClass>::iterator it = _elements.begin(); it != _elements.end(); ++it)
+		for (std::vector<DrawableElement*>::iterator it = _elements.begin(); it != _elements.end(); ++it)
 		{
   			std::cout << "UMLDiagramWidget::drawElt" << std::endl;
 
-			(*it).draw(this);
+			(*it)->draw(this);
 		}
+
 	}
 
   return true;
@@ -68,15 +70,24 @@ bool UMLDiagramWidget::on_button_press_event(GdkEventButton* event)
   	std::cout << "UMLDiagramWidget::click button=" << event->button << std::endl;
 
   	_currentlySelectedElement = NULL;
-  	for (std::vector<UMLClass>::iterator it = _elements.begin(); it != _elements.end(); ++it)
+  	for (std::vector<DrawableElement*>::iterator it = _elements.begin(); it != _elements.end(); ++it)
   	{
-  		if((*it).isPointOnClass(event->x, event->y))
-  			_currentlySelectedElement = &(*it);
+  		if((*it)->isPointOnElement(event->x, event->y))
+  			_currentlySelectedElement = (*it);
   	}
 
   	if(event->button == 1)
   	{
-		_elements.push_back(UMLClass(event->x-28,event->y-28));
+  		switch(_pointerMode)
+		{
+			case ADDCLASS:
+				_elements.push_back(new UMLClass(event->x-28,event->y-28));
+				break;
+			case LINK:
+				startLink(event->x,event->y);
+				break;
+		}
+
 		queue_draw();
   	}
  
@@ -84,6 +95,50 @@ bool UMLDiagramWidget::on_button_press_event(GdkEventButton* event)
 	{
 		_classPopupMenu.popup(event->button, event->time);
 	}
+
+	_mouseButtonPressed = event->button;
+}
+
+bool UMLDiagramWidget::on_button_release_event(GdkEventButton* event)
+{
+	std::cout << "UMLDiagramWidget::release button=" << event->button << std::endl;
+
+	if(event->button == 1)
+	{
+		switch(_pointerMode)
+		{
+			case ADDCLASS:
+				break;
+			case LINK:
+				stopLink(event->x,event->y);
+				break;
+		}
+
+		queue_draw();
+	}
+	_mouseButtonPressed = 0;
+}
+
+bool UMLDiagramWidget::on_mouse_motion_event(GdkEventMotion* event)
+{
+	if(_isLinkStarted)
+	{
+		CairoDrawer::drawLine(get_window(), _link_x1,_link_y1,event->x, event->y);
+		// queue_draw();
+	}
+
+	switch(_pointerMode)
+	{
+		case POINTER:
+			if(_mouseButtonPressed == 1 && _currentlySelectedElement != NULL )
+			{
+				UMLClass* selectedClass = (UMLClass*) _currentlySelectedElement;
+				selectedClass->moveTo(event->x, event->y);
+				queue_draw();
+			}
+			break;
+	}
+
 }
 
 void UMLDiagramWidget::on_UMLClass_openProperties()
@@ -98,8 +153,62 @@ void UMLDiagramWidget::on_UMLClass_openProperties()
 
 		classPropertiesWindow->setMainWidget(this);
 		classPropertiesWindow->show();		
-		classPropertiesWindow->setUMLClass(_currentlySelectedElement);
+		//FIXME this will bug if the selected object is not a class
+		classPropertiesWindow->setUMLClass((UMLClass*)_currentlySelectedElement);
 	}
 	else
 		std::cout << "UMLDiagramWidget::noclassSelectedError" << std::endl;
+}
+
+void UMLDiagramWidget::setPointerMode()
+{
+	_pointerMode = POINTER;
+}
+
+void UMLDiagramWidget::setAddClassMode()
+{
+	_pointerMode = ADDCLASS;
+}
+
+void UMLDiagramWidget::setLinkMode()
+{
+	_pointerMode = LINK;
+}
+
+void UMLDiagramWidget::startLink(int x,int y)
+{
+	_isLinkStarted = true;
+	_link_x1 = x;
+	_link_y1 = y;
+}
+
+void UMLDiagramWidget::stopLink(int x,int y)
+{
+	_isLinkStarted = false;
+
+	DrawableElement* elt1 = findElementAt(_link_x1, _link_y1);
+	DrawableElement* elt2 = findElementAt(x, y);
+
+	if(elt1 != NULL && elt2 != NULL)
+	{
+		connectElements(elt1, elt2);
+	}
+}
+
+DrawableElement* UMLDiagramWidget::findElementAt(int x, int y)
+{
+	for (std::vector<DrawableElement*>::iterator it = _elements.begin(); it != _elements.end(); ++it)
+	{
+		if((*it)->isPointOnElement(x,y))
+		{
+			return (*it);
+		}
+	}
+	return NULL;
+}
+
+void UMLDiagramWidget::connectElements(DrawableElement* elt1, DrawableElement* elt2)
+{
+	std::cout << "UMLDiagramWidget::connectElements" << std::endl;
+	_elements.push_back(new UMLLink((UMLClass*)elt1,(UMLClass*)elt2));
 }

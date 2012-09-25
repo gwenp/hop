@@ -20,10 +20,19 @@ public:
 	void setUMLClass(UMLClass* theClass);
 
 private:
+	bool on_addPropertyButtonButton_clicked(GdkEventButton* event);
+	bool on_addMethodButtonButton_clicked(GdkEventButton* event);
+
 	bool on_applyButton_clicked(GdkEventButton* event);
 	bool on_cancelButton_clicked(GdkEventButton* event);
 
+
 	void hideWindow();
+
+	std::vector<SignatureEditor*> _signatureEditors;
+	
+	std::vector<UMLMethod*> _pendingMethods;
+	std::vector<UMLProperty*> _pendingProperties;
 
 	UMLClass* _theClass;
 

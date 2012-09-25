@@ -1,7 +1,7 @@
 #include "PropertySignatureEditor.hpp"
 
 PropertySignatureEditor::PropertySignatureEditor(UMLProperty* property) 
-	: _property(property), Gtk::HBox()
+	: _property(property), SignatureEditor()
 {
 	_comboVisibility = new Gtk::ComboBoxText();
 	pack_start(*_comboVisibility, false,true);
@@ -9,13 +9,27 @@ PropertySignatureEditor::PropertySignatureEditor(UMLProperty* property)
 	_comboVisibility->append_text("Protected");
 	_comboVisibility->append_text("Private");
 
+	switch(property->getVisibility())
+	{
+		case PUBLIC:
+			_comboVisibility->set_active_text("Public");
+			break;
+		case PROTECTED:
+			_comboVisibility->set_active_text("Protected");
+			break;
+		case PRIVATE:
+			_comboVisibility->set_active_text("Private");
+			break;
+	}
+
+
 	_entryType = new Gtk::Entry();
 	_entryType->set_text(property->getType());
 	pack_start(*_entryType, false,true);
 
 	_entryName = new Gtk::Entry();
 	_entryName->set_text(property->getName());
-	pack_start(*_entryName, false,true);
+	pack_start(*_entryName, true,true);
 
 	show_all_children();
 }
@@ -23,4 +37,10 @@ PropertySignatureEditor::PropertySignatureEditor(UMLProperty* property)
 PropertySignatureEditor::~PropertySignatureEditor()
 {
 
+}
+
+void PropertySignatureEditor::applyChanges()
+{
+	_property->setName(_entryName->get_text());
+	_property->setType(_entryType->get_text());
 }

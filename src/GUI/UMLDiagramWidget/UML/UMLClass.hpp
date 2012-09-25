@@ -4,36 +4,47 @@
 #include "UMLMethod.hpp"
 #include "UMLProperty.hpp"
 
+#include "../DrawableElement.hpp"
 #include "../../../Debug/Dbg.hpp"
 #include "../../../utils/CairoDrawer.hpp"
 
 #include <gtkmm.h>
 
-class UMLClass
+class UMLClass : public DrawableElement
 {
 public:
 	UMLClass();
 	UMLClass(int x, int y);
 	void draw(Gtk::DrawingArea* drawingArea);
-	bool isPointOnClass(int x, int y);
+	bool isPointOnElement(int x, int y);
 
 	void setName(std::string name);
 	std::string getName();
 
 	void addMethod(UMLMethod* m);
-	void addPropery(UMLProperty* p);
+	void addProperty(UMLProperty* p);
 
 	std::vector<UMLMethod*>* getMethods();	
 	std::vector<UMLProperty*>* getProperties();
+
+
+	void moveTo(int x, int y);
+
+	int getCenterX();
+	int getCenterY();
+
+	int getWidth();
+	int getHeight();
+
 private:
 	std::vector<UMLMethod*> _methods;
 	std::vector<UMLProperty*> _properties;
 
 
+
 	int _x;
 	int _y;
 	int _w;
-	int _h;
 
 	std::string _name;
 
