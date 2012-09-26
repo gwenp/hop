@@ -3,18 +3,24 @@
 
 #include <string>
 
-enum Visibility{
-	PUBLIC, PROTECTED, PRIVATE
+namespace Visibility{
+	enum Type{
+		PUBLIC, PROTECTED, PRIVATE, PACKAGE, STATIC
+	};
+
+	std::string convertToString(Type type);
+	std::string convertToSymbol(Type type);
+	Type convertFromString(std::string s);
 };
 
 class UMLMember
 {
 public:
-	UMLMember(Visibility visibility, std::string type, std::string name);
+	UMLMember(Visibility::Type visibility, std::string type, std::string name);
 	~UMLMember();
 
-	Visibility getVisibility();
-	void setVisibility(Visibility visibility);
+	Visibility::Type getVisibility();
+	void setVisibility(Visibility::Type visibility);
 
 	std::string getType();
 	void setType(std::string type);
@@ -26,7 +32,7 @@ private:
 	std::string _type;
 	std::string _name;
 
-	Visibility _visibility;
+	Visibility::Type _visibility;
 };
 
 #endif /* UMLMEMBER_HPP */

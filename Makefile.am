@@ -13,6 +13,7 @@ hop_SOURCES = 	src/main.cpp \
 		src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp \
 		src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLClass.cpp \
+		src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLLink.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLInheritanceLink.cpp \

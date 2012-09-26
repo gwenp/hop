@@ -55,9 +55,10 @@ am_hop_OBJECTS = hop-main.$(OBJEXT) hop-Dbg.$(OBJEXT) \
 	hop-UMLDiagramWidget.$(OBJEXT) hop-SignatureEditor.$(OBJEXT) \
 	hop-PropertySignatureEditor.$(OBJEXT) \
 	hop-MethodSignatureEditor.$(OBJEXT) hop-UMLClass.$(OBJEXT) \
-	hop-UMLMethod.$(OBJEXT) hop-UMLLink.$(OBJEXT) \
-	hop-UMLInheritanceLink.$(OBJEXT) hop-UMLProperty.$(OBJEXT) \
-	hop-UMLMember.$(OBJEXT) hop-UMLClassPropertiesWindow.$(OBJEXT) \
+	hop-UMLPackage.$(OBJEXT) hop-UMLMethod.$(OBJEXT) \
+	hop-UMLLink.$(OBJEXT) hop-UMLInheritanceLink.$(OBJEXT) \
+	hop-UMLProperty.$(OBJEXT) hop-UMLMember.$(OBJEXT) \
+	hop-UMLClassPropertiesWindow.$(OBJEXT) \
 	hop-UMLLinkPropertiesWindow.$(OBJEXT) \
 	hop-CairoDrawer.$(OBJEXT) hop-Arrows.$(OBJEXT)
 hop_OBJECTS = $(am_hop_OBJECTS)
@@ -199,6 +200,7 @@ hop_SOURCES = src/main.cpp \
 		src/GUI/UMLDiagramWidget/PropertySignatureEditor.cpp \
 		src/GUI/UMLDiagramWidget/MethodSignatureEditor.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLClass.cpp \
+		src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLLink.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLInheritanceLink.cpp \
@@ -326,6 +328,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hop-UMLLinkPropertiesWindow.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hop-UMLMember.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hop-UMLMethod.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hop-UMLPackage.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hop-UMLProperty.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hop-main.Po@am__quote@
 
@@ -468,6 +471,20 @@ hop-UMLClass.obj: src/GUI/UMLDiagramWidget/UML/UMLClass.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/GUI/UMLDiagramWidget/UML/UMLClass.cpp' object='hop-UMLClass.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLClass.obj `if test -f 'src/GUI/UMLDiagramWidget/UML/UMLClass.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UML/UMLClass.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UML/UMLClass.cpp'; fi`
+
+hop-UMLPackage.o: src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLPackage.o -MD -MP -MF $(DEPDIR)/hop-UMLPackage.Tpo -c -o hop-UMLPackage.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/hop-UMLPackage.Tpo $(DEPDIR)/hop-UMLPackage.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp' object='hop-UMLPackage.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLPackage.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp
+
+hop-UMLPackage.obj: src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLPackage.obj -MD -MP -MF $(DEPDIR)/hop-UMLPackage.Tpo -c -o hop-UMLPackage.obj `if test -f 'src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/hop-UMLPackage.Tpo $(DEPDIR)/hop-UMLPackage.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp' object='hop-UMLPackage.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hop-UMLPackage.obj `if test -f 'src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp'; then $(CYGPATH_W) 'src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp'; else $(CYGPATH_W) '$(srcdir)/src/GUI/UMLDiagramWidget/UML/UMLPackage.cpp'; fi`
 
 hop-UMLMethod.o: src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hop_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hop-UMLMethod.o -MD -MP -MF $(DEPDIR)/hop-UMLMethod.Tpo -c -o hop-UMLMethod.o `test -f 'src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp' || echo '$(srcdir)/'`src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp

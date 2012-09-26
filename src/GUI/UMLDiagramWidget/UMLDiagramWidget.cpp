@@ -94,6 +94,9 @@ bool UMLDiagramWidget::on_button_press_event(GdkEventButton* event)
 			case INHERITANCELINK:
 				startLink(event->x,event->y);
 				break;
+			case ADDPACKAGE:
+				startLink(event->x,event->y);
+				break;
 		}
 
 		queue_draw();
@@ -123,6 +126,9 @@ bool UMLDiagramWidget::on_button_release_event(GdkEventButton* event)
 			case INHERITANCELINK:
 				stopLink(event->x,event->y);
 				break;
+			case ADDPACKAGE:
+				stopLink(event->x,event->y);
+				break;
 		}
 
 		queue_draw();
@@ -134,8 +140,11 @@ bool UMLDiagramWidget::on_mouse_motion_event(GdkEventMotion* event)
 {
 	if(_isLinkStarted)
 	{
-		CairoDrawer::drawLine(get_window(), _link_x1,_link_y1,event->x, event->y);
-		// queue_draw();
+		if(_pointerMode == LINK || _pointerMode == INHERITANCELINK)
+			CairoDrawer::drawLine(get_window(), _link_x1,_link_y1,event->x, event->y);
+		if(_pointerMode == ADDPACKAGE)
+			CairoDrawer::drawRectangle(get_window(), _link_x1,_link_y1,event->x - _link_x1, event->y - _link_y1);
+
 	}
 
 	switch(_pointerMode)
@@ -195,6 +204,13 @@ void UMLDiagramWidget::setAddClassMode()
 	_pointerMode = ADDCLASS;
 }
 
+void UMLDiagramWidget::setAddPackageMode()
+{
+	std::cout << "UMLDiagramWidget::setAddPackageMode" << std::endl;
+
+	_pointerMode = ADDPACKAGE;
+}
+
 void UMLDiagramWidget::setLinkMode()
 {
 	_pointerMode = LINK;
@@ -208,6 +224,8 @@ void UMLDiagramWidget::setInheritanceLinkMode()
 
 void UMLDiagramWidget::startLink(int x,int y)
 {
+	std::cout << "UMLDiagramWidget::startLink" << std::endl;
+
 	_isLinkStarted = true;
 	_link_x1 = x;
 	_link_y1 = y;
@@ -216,6 +234,33 @@ void UMLDiagramWidget::startLink(int x,int y)
 void UMLDiagramWidget::stopLink(int x,int y)
 {
 	_isLinkStarted = false;
+
+	if(_pointerMode == ADDPACKAGE)
+	{
+		int minX, minY, maxX, maxY;
+		if(x < _link_x1)
+		{
+			minX = x;
+			maxX = _link_x1 - x;
+		}	
+		else
+		{
+			minX = _link_x1;
+			maxX = x - _link_x1;
+		}
+		if(y < _link_y1)
+		{
+			minY = y;
+			maxY = _link_y1 - y;
+		}	
+		else
+		{
+			minY = _link_y1;
+			maxY = y - _link_y1;
+		}
+
+		_elements.push_back(new UMLPackage(minX, minY, maxX, maxY));
+	}
 
 	DrawableElement* elt1 = findElementAt(_link_x1, _link_y1);
 	DrawableElement* elt2 = findElementAt(x, y);
@@ -249,6 +294,7 @@ void UMLDiagramWidget::connectElements(DrawableElement* elt1, DrawableElement* e
 			if(elt1 != elt2)
 				_elements.push_back(new UMLInheritanceLink((UMLClass*)elt1,(UMLClass*)elt2));
 			break;
+
 	}
 
 }

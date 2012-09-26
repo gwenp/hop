@@ -40,5 +40,9 @@ void GtkMain::startUI(int argc, char *argv[])
 	builder->get_widget("inheritanceLinkButton", inheritanceLinkButton);
 	inheritanceLinkButton->signal_clicked().connect(sigc::mem_fun(*diagram, &UMLDiagramWidget::setInheritanceLinkMode));
 
+	Gtk::ToolButton* addPackageButton = 0;
+	builder->get_widget("addPackageButton", addPackageButton);
+	addPackageButton->signal_clicked().connect(sigc::mem_fun(*diagram, &UMLDiagramWidget::setAddPackageMode));
+
     kit.run(*mainWindow);
 }

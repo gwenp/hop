@@ -52,7 +52,7 @@ void UMLClassPropertiesWindow::setUMLClass(UMLClass* theClass)
 
 bool UMLClassPropertiesWindow::on_addPropertyButtonButton_clicked(GdkEventButton* event)
 {
-	UMLProperty* p = new UMLProperty(PRIVATE, "int", "_prop");
+	UMLProperty* p = new UMLProperty(Visibility::PRIVATE, "int", "_prop");
 	_pendingProperties.push_back(p);
 	
 	PropertySignatureEditor* newPropertyEditor = new PropertySignatureEditor(p);
@@ -63,7 +63,7 @@ bool UMLClassPropertiesWindow::on_addPropertyButtonButton_clicked(GdkEventButton
 
 bool UMLClassPropertiesWindow::on_addMethodButtonButton_clicked(GdkEventButton* event)
 {
-	UMLMethod* m = new UMLMethod(PUBLIC, "int", "method");
+	UMLMethod* m = new UMLMethod(Visibility::PUBLIC, "int", "method");
 	_pendingMethods.push_back(m);
 
 	MethodSignatureEditor* newMethodEditor = new MethodSignatureEditor(m);

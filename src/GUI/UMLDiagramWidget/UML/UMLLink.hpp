@@ -7,6 +7,7 @@
 #include "../../../utils/Arrows.hpp"
 
 #include <gtkmm.h>
+#include <string>
 
 namespace LinkTypes{
 	enum Types
@@ -15,8 +16,12 @@ namespace LinkTypes{
 		COMPOSITION,
 		AGGREGATION,
 		NAVIGATION,
+		FORBIDDEN,
 		DEPENDENCY
 	};
+
+	std::string convertToString(Types type);
+	Types convertFromString(std::string s);
 }
 
 class UMLClass;

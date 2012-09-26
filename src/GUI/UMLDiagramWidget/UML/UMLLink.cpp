@@ -2,6 +2,49 @@
 
 #include "UMLClass.hpp"
 
+namespace LinkTypes{
+	std::string convertToString(Types type)
+	{
+		switch(type)
+		{
+			case ASSOCIATION:
+				return "Association";
+				break;
+			case COMPOSITION:
+				return "Composition";
+				break;
+			case AGGREGATION:
+				return "Aggregation";
+				break;
+			case NAVIGATION:
+				return "Navigation";
+				break;
+			case FORBIDDEN:
+				return "Forbidden";
+				break;
+			case DEPENDENCY:
+				return "Dependency";
+				break;
+		}
+	};
+
+	Types convertFromString(std::string s)
+	{
+			if( s == "Association")
+				return ASSOCIATION;
+			if( s == "Composition")
+				return COMPOSITION;
+			if( s == "Aggregation")
+				return AGGREGATION;
+			if( s == "Navigation")
+				return NAVIGATION;
+			if( s == "Forbidden")
+				return FORBIDDEN;
+			if( s == "Dependency")
+				return DEPENDENCY;
+	};
+}
+
 UMLLink::UMLLink(UMLClass* class1, UMLClass* class2) : _class1(class1), _class2(class2), _linkType_begin(LinkTypes::ASSOCIATION), _linkType_end(LinkTypes::ASSOCIATION)
 {
 
@@ -32,6 +75,9 @@ void UMLLink::draw(Gtk::DrawingArea* drawingArea)
 				typeBegin = Arrow::OPEN;
 				lineType = Line::DASHED;
 				break;
+			case LinkTypes::FORBIDDEN:
+				typeBegin = Arrow::CROSS;
+				break;
 			case LinkTypes::NAVIGATION:
 				typeBegin = Arrow::OPEN;
 				break;
@@ -52,14 +98,33 @@ void UMLLink::draw(Gtk::DrawingArea* drawingArea)
 				lineType = Line::DASHED;
 				typeEnd = Arrow::OPEN;
 				break;
+			case LinkTypes::FORBIDDEN:
+				typeEnd = Arrow::CROSS;
+				break;
 			case LinkTypes::NAVIGATION:
 				typeEnd = Arrow::OPEN;
 				break;
 
 		}
 
-		if(_class1 != _class2)
-			Arrows::draw_arrow(cr, getX1(), getY1(), getX2(), getY2(), lineType, typeBegin, typeEnd, isSelected());
+		Arrows::draw_arrow(cr, getX1(), getY1(), getX2(), getY2(), lineType, typeBegin, typeEnd, isSelected());
+		
+		//draw multiplicities
+		double angle = atan2 (getY2() - getY1(), getX2() - getX1()) + M_PI;
+		double arrow_degrees = 0.7;
+		int arrow_length = 30;
+	
+		int xA, yA, xB, yB;
+	
+		xA = getX2() + arrow_length * cos(angle - arrow_degrees);
+		yA = getY2() + arrow_length * sin(angle - arrow_degrees);
+		xB = getX1() - 20 * cos(angle) - arrow_length * cos(angle + arrow_degrees);
+		yB = getY1() - 20 * sin(angle) - arrow_length * sin(angle + arrow_degrees);
+
+		CairoDrawer::drawText(drawingArea->get_window(), xA,yA, getMultiplicityBegin(), "sans 10");
+		CairoDrawer::drawText(drawingArea->get_window(), xB,yB, getMultiplicityEnd(), "sans 10");
+
+
 	}
 	else
 	{
@@ -82,6 +147,9 @@ void UMLLink::draw(Gtk::DrawingArea* drawingArea)
 			case LinkTypes::NAVIGATION:
 				typeBegin = Arrow::OPEN;
 				break;
+			case LinkTypes::FORBIDDEN:
+				typeBegin = Arrow::CROSS;
+				break;
 
 		}
 		switch(getLinkTypeEnd())
@@ -98,6 +166,9 @@ void UMLLink::draw(Gtk::DrawingArea* drawingArea)
 			case LinkTypes::NAVIGATION:
 				typeEnd = Arrow::OPEN;
 				break;
+			case LinkTypes::FORBIDDEN:
+				typeEnd = Arrow::CROSS;
+				break;
 		}
 		
 		Arrows::draw_arrow(cr, x, y+40, x-100, y+40, Line::NONE, Arrow::NONE, typeBegin, isSelected());
@@ -109,6 +180,11 @@ void UMLLink::draw(Gtk::DrawingArea* drawingArea)
 
 		cr->arc(x, y, 40, 20.7f, 0);
 		cr->stroke();
+
+		//draw multiplicities
+
+		CairoDrawer::drawText(drawingArea->get_window(), x-60, y+40, getMultiplicityBegin(), "sans 10");
+		CairoDrawer::drawText(drawingArea->get_window(), x+48, y-34, getMultiplicityEnd(), "sans 10");
 	}
 }
 

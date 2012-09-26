@@ -11,9 +11,9 @@ UMLClass::UMLClass(int x, int y)
 	: _x(x), _y(y), _w(56), _name("untitled")
 {
 	Dbg::out("ctor") << "UMLClass::ctor2" << std::endl;
-	addMethod(new UMLMethod(PUBLIC, "null", "ctor"));
-	addMethod(new UMLMethod(PROTECTED, "int", "addElement"));
-	addProperty(new UMLProperty(PRIVATE, "void", "getElement"));
+	addMethod(new UMLMethod(Visibility::PUBLIC, "null", "ctor"));
+	addMethod(new UMLMethod(Visibility::PROTECTED, "int", "addElement"));
+	addProperty(new UMLProperty(Visibility::PRIVATE, "void", "getElement"));
 }
 
 void UMLClass::draw(Gtk::DrawingArea* drawingArea)
@@ -34,7 +34,8 @@ void UMLClass::draw(Gtk::DrawingArea* drawingArea)
 
 	for (std::vector<UMLProperty*>::iterator it = _properties.begin(); it != _properties.end(); ++it)
 	{
-		CairoDrawer::drawText(drawingArea->get_window(), _x+10,_y+offset, (*it)->getName(), "sans 7");
+		std::string row = Visibility::convertToSymbol((*it)->getVisibility()) + " " + (*it)->getName();
+		CairoDrawer::drawText(drawingArea->get_window(), _x+10,_y+offset, row, "sans 7");
 		offset += 16;
 	}
 
@@ -44,7 +45,8 @@ void UMLClass::draw(Gtk::DrawingArea* drawingArea)
 
 	for (std::vector<UMLMethod*>::iterator it = _methods.begin(); it != _methods.end(); ++it)
 	{
-		CairoDrawer::drawText(drawingArea->get_window(), _x+10,_y+offset, (*it)->getName(), "sans 7");
+		std::string row = Visibility::convertToSymbol((*it)->getVisibility()) + " " + (*it)->getName();
+		CairoDrawer::drawText(drawingArea->get_window(), _x+10,_y+offset, row, "sans 7");
 		offset += 16;
 	}
 

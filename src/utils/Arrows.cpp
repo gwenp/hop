@@ -2,6 +2,8 @@
 
 void Arrows::draw_arrow(Cairo::RefPtr< Cairo::Context > cr,int x1, int y1, int x2, int y2, Line::Type lineType, Arrow::Type startType, Arrow::Type endType, bool selected)
 {
+	std::valarray< double > dashes(2);
+
 	switch(lineType)
 	{
 		case Line::FULL:
@@ -17,6 +19,20 @@ void Arrows::draw_arrow(Cairo::RefPtr< Cairo::Context > cr,int x1, int y1, int x
 
 			break;
 		case Line::DASHED:
+    			dashes[0] = 2.0;
+    			dashes[1] = 2.0;
+    
+			    cr->set_dash (dashes, 0.0);
+				cr->move_to(x1,y1);
+				cr->line_to(x2,y2);
+
+				if(selected)
+					cr->set_source_rgb(1.0, 0.0, 0.0);
+				else
+					cr->set_source_rgb(0.0, 0.0, 0.0);
+
+				cr->stroke();
+
 			break;
 		case Line::NONE:
 			break;
@@ -46,6 +62,10 @@ void Arrows::draw_arrow(Cairo::RefPtr< Cairo::Context > cr,int x1, int y1, int x
 		case Arrow::DIAMONDFILLED:
 			draw_arrowHead_diamond_filled(cr, x1, y1, x2, y2, selected);
 			break;
+
+		case Arrow::CROSS:
+			draw_arrowHead_cross(cr, x1, y1, x2, y2, selected);
+			break;
 	}
 
 	switch(endType)
@@ -71,6 +91,10 @@ void Arrows::draw_arrow(Cairo::RefPtr< Cairo::Context > cr,int x1, int y1, int x
 
 		case Arrow::DIAMONDFILLED:
 			draw_arrowHead_diamond_filled(cr, x2, y2, x1, y1, selected);
+			break;
+
+		case Arrow::CROSS:
+			draw_arrowHead_cross(cr, x2, y2, x1, y1, selected);
 			break;
 	}
 }
@@ -212,5 +236,36 @@ void Arrows::draw_arrowHead_diamond_filled(Cairo::RefPtr< Cairo::Context > cr, i
 	else
 		cr->set_source_rgb(0.0, 0.0, 0.0);
 	cr->fill();
+	cr->stroke();
+}
+
+void Arrows::draw_arrowHead_cross(Cairo::RefPtr< Cairo::Context > cr, int x1, int y1, int x2, int y2, bool selected)
+{
+	double angle = atan2 (y2 - y1, x2 - x1) + M_PI;
+	double arrow_degrees = 0.5;
+	double arrow_length = 18;
+
+	float xA, yA, xB, yB, xC, yC, xD, yD;
+
+	xA = x2 + arrow_length * cos(angle - arrow_degrees);
+	yA = y2 + arrow_length * sin(angle - arrow_degrees);
+	xB = x2 + arrow_length * cos(angle + arrow_degrees);
+	yB = y2 + arrow_length * sin(angle + arrow_degrees);
+
+	xC = x2 + 10 * cos(angle) + arrow_length * cos(angle - arrow_degrees);
+	yC = y2 + 10 * sin(angle) + arrow_length * sin(angle - arrow_degrees);
+	xD = x2 + 10 * cos(angle) + arrow_length * cos(angle + arrow_degrees);
+	yD = y2 + 10 * sin(angle) + arrow_length * sin(angle + arrow_degrees);
+
+
+	cr->move_to(xA,yA);
+	cr->line_to(xD,yD);
+	cr->move_to(xC,yC);
+	cr->line_to(xB,yB);
+
+	if(selected)
+		cr->set_source_rgb(1.0, 0.0, 0.0);
+	else
+		cr->set_source_rgb(0.0, 0.0, 0.0);
 	cr->stroke();
 }

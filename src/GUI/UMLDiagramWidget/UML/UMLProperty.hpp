@@ -8,7 +8,7 @@
 class UMLProperty : public UMLMember
 {
 public:
-	UMLProperty(Visibility visibility, std::string type, std::string name);
+	UMLProperty(Visibility::Type visibility, std::string type, std::string name);
 	~UMLProperty();
 
 private:

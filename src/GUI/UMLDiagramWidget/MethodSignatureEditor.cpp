@@ -8,19 +8,10 @@ MethodSignatureEditor::MethodSignatureEditor(UMLMethod* method)
 	_comboVisibility->append_text("Public");
 	_comboVisibility->append_text("Protected");
 	_comboVisibility->append_text("Private");
+	_comboVisibility->append_text("Package");
+	_comboVisibility->append_text("Static");
 
-	switch(method->getVisibility())
-	{
-		case PUBLIC:
-			_comboVisibility->set_active_text("Public");
-			break;
-		case PROTECTED:
-			_comboVisibility->set_active_text("Protected");
-			break;
-		case PRIVATE:
-			_comboVisibility->set_active_text("Private");
-			break;
-	}
+	_comboVisibility->set_active_text(Visibility::convertToString(method->getVisibility()));
 
 	_entryType = new Gtk::Entry();
 	_entryType->set_text(method->getType());

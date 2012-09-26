@@ -4,6 +4,7 @@
 #include "UMLClassPropertiesWindow.hpp"
 #include "UMLLinkPropertiesWindow.hpp"
 #include "UML/UMLClass.hpp"
+#include "UML/UMLPackage.hpp"
 #include "UML/UMLLink.hpp"
 #include "UML/UMLInheritanceLink.hpp"
 #include "../../Debug/Dbg.hpp"
@@ -18,6 +19,7 @@ enum PointerMode
 	POINTER,
 	LINK,
 	INHERITANCELINK,
+	ADDPACKAGE,
 	ADDCLASS
 };
 
@@ -30,6 +32,7 @@ public:
 
 	void setPointerMode();
 	void setAddClassMode();
+	void setAddPackageMode();
 	void setLinkMode();
 	void setInheritanceLinkMode();
 protected:
@@ -40,8 +43,8 @@ protected:
 	bool on_mouse_motion_event(GdkEventMotion* event);
 	void on_UMLClass_openProperties();
 
-	void startLink(int x,int y);	
-	void stopLink(int x,int y);	
+	void startLink(int x,int y);
+	void stopLink(int x,int y);
 
 	DrawableElement* findElementAt(int x, int y);
 	void connectElements(DrawableElement* elt1, DrawableElement* elt2);

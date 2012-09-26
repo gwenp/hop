@@ -9,18 +9,8 @@ PropertySignatureEditor::PropertySignatureEditor(UMLProperty* property)
 	_comboVisibility->append_text("Protected");
 	_comboVisibility->append_text("Private");
 
-	switch(property->getVisibility())
-	{
-		case PUBLIC:
-			_comboVisibility->set_active_text("Public");
-			break;
-		case PROTECTED:
-			_comboVisibility->set_active_text("Protected");
-			break;
-		case PRIVATE:
-			_comboVisibility->set_active_text("Private");
-			break;
-	}
+	_comboVisibility->set_active_text(Visibility::convertToString(property->getVisibility()));
+	
 
 
 	_entryType = new Gtk::Entry();
