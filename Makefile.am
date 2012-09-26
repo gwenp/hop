@@ -15,7 +15,10 @@ hop_SOURCES = 	src/main.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLClass.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLMethod.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLLink.cpp \
+		src/GUI/UMLDiagramWidget/UML/UMLInheritanceLink.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLProperty.cpp \
 		src/GUI/UMLDiagramWidget/UML/UMLMember.cpp \
 		src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.cpp \
-		src/utils/CairoDrawer.cpp
+		src/GUI/UMLDiagramWidget/UMLLinkPropertiesWindow.cpp \
+		src/utils/CairoDrawer.cpp \
+		src/utils/Arrows.cpp

@@ -1,9 +1,10 @@
 #include "UMLClassPropertiesWindow.hpp"
 
-UMLClassPropertiesWindow::UMLClassPropertiesWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder): Gtk::Window(cobject)
+UMLClassPropertiesWindow::UMLClassPropertiesWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
+	: Gtk::Window(cobject)
 {
 	builder->get_widget("classNameEntry",_classNameEntry);
-	builder->get_widget("applyButton",_applyButton);
+ 	builder->get_widget("applyButton",_applyButton);
 	builder->get_widget("cancelButton",_cancelButton);
 	builder->get_widget("properties_vbox",_properties_vbox);
 	builder->get_widget("methods_vbox",_methods_vbox);
@@ -13,7 +14,7 @@ UMLClassPropertiesWindow::UMLClassPropertiesWindow(BaseObjectType* cobject, cons
 	_addPropertyButton->signal_button_press_event().connect(sigc::mem_fun(*this, &UMLClassPropertiesWindow::on_addPropertyButtonButton_clicked), false);
 	_addMethodButton->signal_button_press_event().connect(sigc::mem_fun(*this, &UMLClassPropertiesWindow::on_addMethodButtonButton_clicked), false);
 	
-	_applyButton->signal_button_press_event().connect(sigc::mem_fun(*this, &UMLClassPropertiesWindow::on_applyButton_clicked), false);
+ 	_applyButton->signal_button_press_event().connect(sigc::mem_fun(*this, &UMLClassPropertiesWindow::on_applyButton_clicked), false);
 	_cancelButton->signal_button_press_event().connect(sigc::mem_fun(*this, &UMLClassPropertiesWindow::on_cancelButton_clicked), false);
 
 }

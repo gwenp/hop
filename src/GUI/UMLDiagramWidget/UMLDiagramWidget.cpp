@@ -15,7 +15,7 @@ UMLDiagramWidget::UMLDiagramWidget(BaseObjectType* cobject, const Glib::RefPtr<G
 	
 	menulist.push_back( Gtk::Menu_Helpers::MenuElem("Properties",sigc::mem_fun(*this, &UMLDiagramWidget::on_UMLClass_openProperties) ) );
 
-    widgetBuilder = Gtk::Builder::create_from_file("res/UMLDiagramWidget_classProperties.glade");
+    widgetBuilder = Gtk::Builder::create_from_file("res/UMLDiagramWidget_PropertiesWindows.glade");
 }
 
 UMLDiagramWidget::~UMLDiagramWidget()
@@ -72,8 +72,13 @@ bool UMLDiagramWidget::on_button_press_event(GdkEventButton* event)
   	_currentlySelectedElement = NULL;
   	for (std::vector<DrawableElement*>::iterator it = _elements.begin(); it != _elements.end(); ++it)
   	{
+  		(*it)->setSelected(false);
+
   		if((*it)->isPointOnElement(event->x, event->y))
+  		{
   			_currentlySelectedElement = (*it);
+  			(*it)->setSelected(true);
+  		}
   	}
 
   	if(event->button == 1)
@@ -84,6 +89,9 @@ bool UMLDiagramWidget::on_button_press_event(GdkEventButton* event)
 				_elements.push_back(new UMLClass(event->x-28,event->y-28));
 				break;
 			case LINK:
+				startLink(event->x,event->y);
+				break;
+			case INHERITANCELINK:
 				startLink(event->x,event->y);
 				break;
 		}
@@ -110,6 +118,9 @@ bool UMLDiagramWidget::on_button_release_event(GdkEventButton* event)
 			case ADDCLASS:
 				break;
 			case LINK:
+				stopLink(event->x,event->y);
+				break;
+			case INHERITANCELINK:
 				stopLink(event->x,event->y);
 				break;
 		}
@@ -147,14 +158,28 @@ void UMLDiagramWidget::on_UMLClass_openProperties()
 
 	if(_currentlySelectedElement != NULL)
 	{
-		UMLClassPropertiesWindow* classPropertiesWindow = NULL;
+		if(_currentlySelectedElement->getType() == ElementType::BOX)
+		{
+			UMLClassPropertiesWindow* classPropertiesWindow = NULL;
 
-		widgetBuilder->get_widget_derived("classPropertiesWindow", classPropertiesWindow);
+			widgetBuilder->get_widget_derived("classPropertiesWindow", classPropertiesWindow);
 
-		classPropertiesWindow->setMainWidget(this);
-		classPropertiesWindow->show();		
-		//FIXME this will bug if the selected object is not a class
-		classPropertiesWindow->setUMLClass((UMLClass*)_currentlySelectedElement);
+			classPropertiesWindow->setMainWidget(this);
+			classPropertiesWindow->show();		
+			//FIXME this will bug if the selected object is not a class
+			classPropertiesWindow->setUMLClass((UMLClass*)_currentlySelectedElement);
+		}
+		else
+		{
+			UMLLinkPropertiesWindow* linkPropertiesWindow = NULL;
+
+			widgetBuilder->get_widget_derived("linkPropertiesWindow", linkPropertiesWindow);
+
+			linkPropertiesWindow->setMainWidget(this);
+			linkPropertiesWindow->show();		
+
+			linkPropertiesWindow->setUMLLink((UMLLink*)_currentlySelectedElement);
+		}
 	}
 	else
 		std::cout << "UMLDiagramWidget::noclassSelectedError" << std::endl;
@@ -174,6 +199,12 @@ void UMLDiagramWidget::setLinkMode()
 {
 	_pointerMode = LINK;
 }
+
+void UMLDiagramWidget::setInheritanceLinkMode()
+{
+	_pointerMode = INHERITANCELINK;
+}
+
 
 void UMLDiagramWidget::startLink(int x,int y)
 {
@@ -209,6 +240,14 @@ DrawableElement* UMLDiagramWidget::findElementAt(int x, int y)
 
 void UMLDiagramWidget::connectElements(DrawableElement* elt1, DrawableElement* elt2)
 {
-	std::cout << "UMLDiagramWidget::connectElements" << std::endl;
-	_elements.push_back(new UMLLink((UMLClass*)elt1,(UMLClass*)elt2));
+	switch(_pointerMode)
+	{
+		case LINK:
+			_elements.push_back(new UMLLink((UMLClass*)elt1,(UMLClass*)elt2));
+			break;
+		case INHERITANCELINK:
+			_elements.push_back(new UMLInheritanceLink((UMLClass*)elt1,(UMLClass*)elt2));
+			break;
+	}
+
 }

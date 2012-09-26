@@ -2,8 +2,10 @@
 #define UMLDIAGRAMWIDGET_HPP
 
 #include "UMLClassPropertiesWindow.hpp"
+#include "UMLLinkPropertiesWindow.hpp"
 #include "UML/UMLClass.hpp"
 #include "UML/UMLLink.hpp"
+#include "UML/UMLInheritanceLink.hpp"
 #include "../../Debug/Dbg.hpp"
 
 #include <vector>
@@ -15,6 +17,7 @@ enum PointerMode
 {
 	POINTER,
 	LINK,
+	INHERITANCELINK,
 	ADDCLASS
 };
 
@@ -28,6 +31,7 @@ public:
 	void setPointerMode();
 	void setAddClassMode();
 	void setLinkMode();
+	void setInheritanceLinkMode();
 protected:
   //Override default signal handler:
 	bool on_expose_event(GdkEventExpose* event);

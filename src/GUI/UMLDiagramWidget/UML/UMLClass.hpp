@@ -36,6 +36,8 @@ public:
 	int getWidth();
 	int getHeight();
 
+	virtual ElementType::Type getType();
+
 private:
 	std::vector<UMLMethod*> _methods;
 	std::vector<UMLProperty*> _properties;

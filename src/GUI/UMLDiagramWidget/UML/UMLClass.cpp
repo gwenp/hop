@@ -118,3 +118,8 @@ int UMLClass::getWidth()
 {
 	return _w;
 }
+
+ElementType::Type UMLClass::getType()
+{
+	return ElementType::BOX;
+}

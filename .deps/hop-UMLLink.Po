@@ -1117,7 +1117,8 @@ hop-UMLLink.o: src/GUI/UMLDiagramWidget/UML/UMLLink.cpp \
  /usr/include/gtkmm-2.4/gtkmm/actiongroup.h \
  /usr/include/gtkmm-2.4/gtkmm/viewport.h \
  src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLClass.hpp \
+ src/GUI/UMLDiagramWidget/UML/../../../utils/Arrows.hpp \
+ /usr/include/c++/4.6/iostream src/GUI/UMLDiagramWidget/UML/UMLClass.hpp \
  src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp \
  src/GUI/UMLDiagramWidget/UML/UMLMember.hpp \
  src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp \
@@ -1129,7 +1130,7 @@ hop-UMLLink.o: src/GUI/UMLDiagramWidget/UML/UMLLink.cpp \
  /usr/include/jsoncpp/json/autolink.h /usr/include/jsoncpp/json/config.h \
  /usr/include/jsoncpp/json/value.h /usr/include/jsoncpp/json/forwards.h \
  /usr/include/jsoncpp/json/reader.h /usr/include/jsoncpp/json/features.h \
- /usr/include/c++/4.6/iostream /usr/include/jsoncpp/json/writer.h
+ /usr/include/jsoncpp/json/writer.h
 
 src/GUI/UMLDiagramWidget/UML/UMLLink.hpp:
 
@@ -3593,6 +3594,10 @@ src/GUI/UMLDiagramWidget/UML/../DrawableElement.hpp:
 
 src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp:
 
+src/GUI/UMLDiagramWidget/UML/../../../utils/Arrows.hpp:
+
+/usr/include/c++/4.6/iostream:
+
 src/GUI/UMLDiagramWidget/UML/UMLClass.hpp:
 
 src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp:
@@ -3626,7 +3631,5 @@ src/GUI/UMLDiagramWidget/UML/../../../Debug/Dbg.hpp:
 /usr/include/jsoncpp/json/reader.h:
 
 /usr/include/jsoncpp/json/features.h:
-
-/usr/include/c++/4.6/iostream:
 
 /usr/include/jsoncpp/json/writer.h:

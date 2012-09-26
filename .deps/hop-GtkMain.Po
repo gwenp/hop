@@ -1135,6 +1135,10 @@ hop-GtkMain.o: src/GUI/GtkMain.cpp src/GUI/GtkMain.hpp \
  src/GUI/UMLDiagramWidget/SignatureEditor.hpp \
  src/GUI/UMLDiagramWidget/MethodSignatureEditor.hpp \
  src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp \
+ src/GUI/UMLDiagramWidget/UMLLinkPropertiesWindow.hpp \
+ src/GUI/UMLDiagramWidget/UML/UMLLink.hpp \
+ src/GUI/UMLDiagramWidget/UML/../../../utils/Arrows.hpp \
+ src/GUI/UMLDiagramWidget/UML/UMLInheritanceLink.hpp \
  src/GUI/UMLDiagramWidget/UML/UMLLink.hpp \
  src/GUI/UMLDiagramWidget/../../Debug/Dbg.hpp
 
@@ -3653,6 +3657,14 @@ src/GUI/UMLDiagramWidget/SignatureEditor.hpp:
 src/GUI/UMLDiagramWidget/MethodSignatureEditor.hpp:
 
 src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp:
+
+src/GUI/UMLDiagramWidget/UMLLinkPropertiesWindow.hpp:
+
+src/GUI/UMLDiagramWidget/UML/UMLLink.hpp:
+
+src/GUI/UMLDiagramWidget/UML/../../../utils/Arrows.hpp:
+
+src/GUI/UMLDiagramWidget/UML/UMLInheritanceLink.hpp:
 
 src/GUI/UMLDiagramWidget/UML/UMLLink.hpp:
 

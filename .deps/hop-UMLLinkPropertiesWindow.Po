@@ -1,6 +1,6 @@
-hop-UMLDiagramWidget.o: src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp \
- src/GUI/UMLDiagramWidget/UMLDiagramWidget.hpp \
- src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.hpp \
+hop-UMLLinkPropertiesWindow.o: \
+ src/GUI/UMLDiagramWidget/UMLLinkPropertiesWindow.cpp \
+ src/GUI/UMLDiagramWidget/UMLLinkPropertiesWindow.hpp \
  /usr/include/c++/4.6/vector /usr/include/c++/4.6/bits/stl_algobase.h \
  /usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++config.h \
  /usr/include/c++/4.6/x86_64-linux-gnu/./bits/os_defines.h \
@@ -93,10 +93,7 @@ hop-UMLDiagramWidget.o: src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp \
  /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/c++/4.6/bits/basic_string.tcc \
- src/GUI/UMLDiagramWidget/UML/UMLClass.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLMember.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp \
+ src/GUI/UMLDiagramWidget/UML/UMLLink.hpp \
  src/GUI/UMLDiagramWidget/UML/../DrawableElement.hpp \
  /usr/include/gtkmm-2.4/gtkmm.h /usr/include/glibmm-2.4/glibmm.h \
  /usr/lib/x86_64-linux-gnu/glibmm-2.4/include/glibmmconfig.h \
@@ -1119,31 +1116,17 @@ hop-UMLDiagramWidget.o: src/GUI/UMLDiagramWidget/UMLDiagramWidget.cpp \
  /usr/include/gtkmm-2.4/gtkmm/uimanager.h \
  /usr/include/gtkmm-2.4/gtkmm/actiongroup.h \
  /usr/include/gtkmm-2.4/gtkmm/viewport.h \
- src/GUI/UMLDiagramWidget/UML/../../../Debug/Dbg.hpp \
- /usr/include/c++/4.6/fstream /usr/include/c++/4.6/bits/codecvt.h \
- /usr/include/c++/4.6/x86_64-linux-gnu/./bits/basic_file.h \
- /usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++io.h \
- /usr/include/c++/4.6/bits/fstream.tcc /usr/include/jsoncpp/json/json.h \
- /usr/include/jsoncpp/json/autolink.h /usr/include/jsoncpp/json/config.h \
- /usr/include/jsoncpp/json/value.h /usr/include/jsoncpp/json/forwards.h \
- /usr/include/jsoncpp/json/reader.h /usr/include/jsoncpp/json/features.h \
- /usr/include/c++/4.6/iostream /usr/include/jsoncpp/json/writer.h \
  src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp \
+ src/GUI/UMLDiagramWidget/UML/../../../utils/Arrows.hpp \
+ /usr/include/c++/4.6/iostream \
  src/GUI/UMLDiagramWidget/PropertySignatureEditor.hpp \
  src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp \
+ src/GUI/UMLDiagramWidget/UML/UMLMember.hpp \
  src/GUI/UMLDiagramWidget/SignatureEditor.hpp \
  src/GUI/UMLDiagramWidget/MethodSignatureEditor.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp \
- src/GUI/UMLDiagramWidget/UMLLinkPropertiesWindow.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLLink.hpp \
- src/GUI/UMLDiagramWidget/UML/../../../utils/Arrows.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLInheritanceLink.hpp \
- src/GUI/UMLDiagramWidget/UML/UMLLink.hpp \
- src/GUI/UMLDiagramWidget/../../Debug/Dbg.hpp
+ src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp
 
-src/GUI/UMLDiagramWidget/UMLDiagramWidget.hpp:
-
-src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.hpp:
+src/GUI/UMLDiagramWidget/UMLLinkPropertiesWindow.hpp:
 
 /usr/include/c++/4.6/vector:
 
@@ -1383,13 +1366,7 @@ src/GUI/UMLDiagramWidget/UMLClassPropertiesWindow.hpp:
 
 /usr/include/c++/4.6/bits/basic_string.tcc:
 
-src/GUI/UMLDiagramWidget/UML/UMLClass.hpp:
-
-src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp:
-
-src/GUI/UMLDiagramWidget/UML/UMLMember.hpp:
-
-src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp:
+src/GUI/UMLDiagramWidget/UML/UMLLink.hpp:
 
 src/GUI/UMLDiagramWidget/UML/../DrawableElement.hpp:
 
@@ -3611,56 +3588,20 @@ src/GUI/UMLDiagramWidget/UML/../DrawableElement.hpp:
 
 /usr/include/gtkmm-2.4/gtkmm/viewport.h:
 
-src/GUI/UMLDiagramWidget/UML/../../../Debug/Dbg.hpp:
+src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp:
 
-/usr/include/c++/4.6/fstream:
-
-/usr/include/c++/4.6/bits/codecvt.h:
-
-/usr/include/c++/4.6/x86_64-linux-gnu/./bits/basic_file.h:
-
-/usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++io.h:
-
-/usr/include/c++/4.6/bits/fstream.tcc:
-
-/usr/include/jsoncpp/json/json.h:
-
-/usr/include/jsoncpp/json/autolink.h:
-
-/usr/include/jsoncpp/json/config.h:
-
-/usr/include/jsoncpp/json/value.h:
-
-/usr/include/jsoncpp/json/forwards.h:
-
-/usr/include/jsoncpp/json/reader.h:
-
-/usr/include/jsoncpp/json/features.h:
+src/GUI/UMLDiagramWidget/UML/../../../utils/Arrows.hpp:
 
 /usr/include/c++/4.6/iostream:
-
-/usr/include/jsoncpp/json/writer.h:
-
-src/GUI/UMLDiagramWidget/UML/../../../utils/CairoDrawer.hpp:
 
 src/GUI/UMLDiagramWidget/PropertySignatureEditor.hpp:
 
 src/GUI/UMLDiagramWidget/UML/UMLProperty.hpp:
+
+src/GUI/UMLDiagramWidget/UML/UMLMember.hpp:
 
 src/GUI/UMLDiagramWidget/SignatureEditor.hpp:
 
 src/GUI/UMLDiagramWidget/MethodSignatureEditor.hpp:
 
 src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp:
-
-src/GUI/UMLDiagramWidget/UMLLinkPropertiesWindow.hpp:
-
-src/GUI/UMLDiagramWidget/UML/UMLLink.hpp:
-
-src/GUI/UMLDiagramWidget/UML/../../../utils/Arrows.hpp:
-
-src/GUI/UMLDiagramWidget/UML/UMLInheritanceLink.hpp:
-
-src/GUI/UMLDiagramWidget/UML/UMLLink.hpp:
-
-src/GUI/UMLDiagramWidget/../../Debug/Dbg.hpp:

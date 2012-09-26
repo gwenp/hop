@@ -1136,6 +1136,10 @@ hop-main.o: src/main.cpp /usr/include/c++/4.6/string \
  src/GUI/UMLDiagramWidget/SignatureEditor.hpp \
  src/GUI/UMLDiagramWidget/MethodSignatureEditor.hpp \
  src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp \
+ src/GUI/UMLDiagramWidget/UMLLinkPropertiesWindow.hpp \
+ src/GUI/UMLDiagramWidget/UML/UMLLink.hpp \
+ src/GUI/UMLDiagramWidget/UML/../../../utils/Arrows.hpp \
+ src/GUI/UMLDiagramWidget/UML/UMLInheritanceLink.hpp \
  src/GUI/UMLDiagramWidget/UML/UMLLink.hpp \
  src/GUI/UMLDiagramWidget/../../Debug/Dbg.hpp src/Debug/Dbg.hpp
 
@@ -3658,6 +3662,14 @@ src/GUI/UMLDiagramWidget/SignatureEditor.hpp:
 src/GUI/UMLDiagramWidget/MethodSignatureEditor.hpp:
 
 src/GUI/UMLDiagramWidget/UML/UMLMethod.hpp:
+
+src/GUI/UMLDiagramWidget/UMLLinkPropertiesWindow.hpp:
+
+src/GUI/UMLDiagramWidget/UML/UMLLink.hpp:
+
+src/GUI/UMLDiagramWidget/UML/../../../utils/Arrows.hpp:
+
+src/GUI/UMLDiagramWidget/UML/UMLInheritanceLink.hpp:
 
 src/GUI/UMLDiagramWidget/UML/UMLLink.hpp:
 
