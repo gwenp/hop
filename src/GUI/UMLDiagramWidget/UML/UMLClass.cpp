@@ -123,5 +123,5 @@ int UMLClass::getWidth()
 
 ElementType::Type UMLClass::getType()
 {
-	return ElementType::BOX;
+	return ElementType::CLASS;
 }

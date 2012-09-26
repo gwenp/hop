@@ -7,7 +7,8 @@ namespace ElementType
 {
 	enum Type
 	{
-		BOX,
+		CLASS,
+		PACKAGE,
 		LINK
 	};
 }

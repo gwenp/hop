@@ -42,7 +42,7 @@ protected:
 	bool on_button_release_event(GdkEventButton* event);
 	bool on_mouse_motion_event(GdkEventMotion* event);
 	void on_UMLClass_openProperties();
-
+	void on_UMLElement_Delete();
 	void startLink(int x,int y);
 	void stopLink(int x,int y);
 

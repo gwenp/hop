@@ -43,7 +43,7 @@ std::string UMLPackage::getName()
 
 void UMLPackage::moveTo(int x, int y)
 {
-	std::cout << "moveTo " << x << "," << y << std::endl;
+	std::cout << "UMLPackage::moveTo " << x << "," << y << std::endl;
 	_x = x;
 	_y = y;
 }
@@ -70,5 +70,5 @@ int UMLPackage::getWidth()
 
 ElementType::Type UMLPackage::getType()
 {
-	return ElementType::BOX;
+	return ElementType::PACKAGE;
 }

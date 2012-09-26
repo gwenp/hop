@@ -13,6 +13,7 @@ UMLDiagramWidget::UMLDiagramWidget(BaseObjectType* cobject, const Glib::RefPtr<G
 
   	Gtk::Menu::MenuList& menulist = _classPopupMenu.items();
 	
+	menulist.push_back( Gtk::Menu_Helpers::MenuElem("Delete",sigc::mem_fun(*this, &UMLDiagramWidget::on_UMLElement_Delete) ) );
 	menulist.push_back( Gtk::Menu_Helpers::MenuElem("Properties",sigc::mem_fun(*this, &UMLDiagramWidget::on_UMLClass_openProperties) ) );
 
     widgetBuilder = Gtk::Builder::create_from_file("res/UMLDiagramWidget_PropertiesWindows.glade");
@@ -152,9 +153,18 @@ bool UMLDiagramWidget::on_mouse_motion_event(GdkEventMotion* event)
 		case POINTER:
 			if(_mouseButtonPressed == 1 && _currentlySelectedElement != NULL )
 			{
-				UMLClass* selectedClass = (UMLClass*) _currentlySelectedElement;
-				selectedClass->moveTo(event->x, event->y);
-				queue_draw();
+				if(_currentlySelectedElement->getType() == ElementType::CLASS)
+				{
+					UMLClass* selectedClass = (UMLClass*) _currentlySelectedElement;
+					selectedClass->moveTo(event->x, event->y);
+					queue_draw();
+				}
+				else if(_currentlySelectedElement->getType() == ElementType::PACKAGE)
+				{
+					UMLPackage* selectedPackage = (UMLPackage*) _currentlySelectedElement;
+					selectedPackage->moveTo(event->x, event->y);
+					queue_draw();
+				}
 			}
 			break;
 	}
@@ -167,7 +177,7 @@ void UMLDiagramWidget::on_UMLClass_openProperties()
 
 	if(_currentlySelectedElement != NULL)
 	{
-		if(_currentlySelectedElement->getType() == ElementType::BOX)
+		if(_currentlySelectedElement->getType() == ElementType::CLASS)
 		{
 			UMLClassPropertiesWindow* classPropertiesWindow = NULL;
 
@@ -192,6 +202,11 @@ void UMLDiagramWidget::on_UMLClass_openProperties()
 	}
 	else
 		std::cout << "UMLDiagramWidget::noclassSelectedError" << std::endl;
+}
+
+void UMLDiagramWidget::on_UMLElement_Delete()
+{
+	
 }
 
 void UMLDiagramWidget::setPointerMode()
