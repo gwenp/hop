@@ -36,10 +36,10 @@ private:
 	Gtk::HBox* _hboxMultiplicityEnd;
 
 	Gtk::ComboBoxText* _comboFamilyBegin;
-	Gtk::ComboBoxText* _comboMultiplicityBegin;
+	Gtk::ComboBoxEntryText* _comboMultiplicityBegin;
 	
 	Gtk::ComboBoxText* _comboFamilyEnd;
-	Gtk::ComboBoxText* _comboMultiplicityEnd;
+	Gtk::ComboBoxEntryText* _comboMultiplicityEnd;
 
 	Gtk::DrawingArea* _mainWidget;
 };

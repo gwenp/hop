@@ -11,5 +11,5 @@ void UMLInheritanceLink::draw(Gtk::DrawingArea* drawingArea)
 {
 	Cairo::RefPtr<Cairo::Context> cr = drawingArea->get_window()->create_cairo_context();
 
-	Arrows::draw_arrow(cr, getX1(), getY1(), getX2(), getY2(), Arrow::NORMAL, Arrow::NONE, isSelected());
+	Arrows::draw_arrow(cr, getX1(), getY1(), getX2(), getY2(), Line::FULL, Arrow::NORMAL, Arrow::NONE, isSelected());
 }

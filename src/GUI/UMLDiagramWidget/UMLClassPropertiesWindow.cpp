@@ -66,7 +66,6 @@ bool UMLClassPropertiesWindow::on_addMethodButtonButton_clicked(GdkEventButton* 
 	UMLMethod* m = new UMLMethod(PUBLIC, "int", "method");
 	_pendingMethods.push_back(m);
 
-
 	MethodSignatureEditor* newMethodEditor = new MethodSignatureEditor(m);
 	_signatureEditors.push_back(newMethodEditor);
 	_methods_vbox->pack_start(*newMethodEditor, false,true);

@@ -1,16 +1,26 @@
 #include "Arrows.hpp"
 
-void Arrows::draw_arrow(Cairo::RefPtr< Cairo::Context > cr,int x1, int y1, int x2, int y2, Arrow::Type startType, Arrow::Type endType, bool selected)
+void Arrows::draw_arrow(Cairo::RefPtr< Cairo::Context > cr,int x1, int y1, int x2, int y2, Line::Type lineType, Arrow::Type startType, Arrow::Type endType, bool selected)
 {
-	cr->move_to(x1,y1);
-	cr->line_to(x2,y2);
+	switch(lineType)
+	{
+		case Line::FULL:
+			cr->move_to(x1,y1);
+			cr->line_to(x2,y2);
 
-	if(selected)
-		cr->set_source_rgb(1.0, 0.0, 0.0);
-	else
-		cr->set_source_rgb(0.0, 0.0, 0.0);
+			if(selected)
+				cr->set_source_rgb(1.0, 0.0, 0.0);
+			else
+				cr->set_source_rgb(0.0, 0.0, 0.0);
 
-	cr->stroke();
+			cr->stroke();
+
+			break;
+		case Line::DASHED:
+			break;
+		case Line::NONE:
+			break;
+	}
 
 	switch(startType)
 	{

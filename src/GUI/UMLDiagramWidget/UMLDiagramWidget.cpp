@@ -246,7 +246,8 @@ void UMLDiagramWidget::connectElements(DrawableElement* elt1, DrawableElement* e
 			_elements.push_back(new UMLLink((UMLClass*)elt1,(UMLClass*)elt2));
 			break;
 		case INHERITANCELINK:
-			_elements.push_back(new UMLInheritanceLink((UMLClass*)elt1,(UMLClass*)elt2));
+			if(elt1 != elt2)
+				_elements.push_back(new UMLInheritanceLink((UMLClass*)elt1,(UMLClass*)elt2));
 			break;
 	}
 
